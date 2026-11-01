@@ -1,0 +1,9 @@
+A desktop landing page for Katharo Cleaning, a premium cleaning company in Romania, rendered edge to edge as a finished website screen with crisp readable Romanian text, no browser window, device or desk around it.
+
+The visitor, a homeowner or an office manager, must decide whether to trust Katharo inside their space and ask for a fixed-price quote.
+
+What leads: the building's front entrance and its brass intercom panel. The page is the entrance of a 1930s Bucharest interwar apartment block: tall black lacquer double doors with geometric gold Art Deco ironwork over frosted glass. The headline "Curat, ca la prima intrare." is set into the glass as etched lettering. Beside the doors, a large polished gold brass intercom panel is the quote form itself: each labelled push-button is a kind of space ("Locuință", "Apartament", "Birou", "Depozit", "După renovare"), with a small engraved field "Suprafață (m²)" and the large call button "Cere oferta fixă". A short line under the headline: "Preț fix, în scris, înainte de lucrare. Aceeași echipă la fiecare vizită." Below the entrance, the next section starts on a cream terrazzo floor: "Regulile casei" with four rules: "Preț fix, în scris", "Aceeași echipă", "Factură și contract", "Produse sigure pentru copii și animale".
+
+Frame: top left the logo, a gold high-contrast serif letter K with a small four-point sparkle, next to the wordmark KATHARO CLEANING set like a building's gold name over the doors; navigation "Servicii", "Cum lucrăm", "Regulile casei", "Întrebări"; at the right "Solicită o ofertă".
+
+Visual law, pinned brand palette and nothing else: black lacquer with polished gold for the dark areas, warm cream with bronze for the light areas; no green, no other hues. Frosted glass, cream terrazzo with bronze and black chips. Building lettering in a geometric Art Deco display face, reading text in a quiet sans. The signature is the gold intercom panel as the working form.

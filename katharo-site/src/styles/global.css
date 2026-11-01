@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/fonts/work-sans-latin-ext.woff2') format('woff2');
+  font-weight: 300 700;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/fonts/work-sans-latin.woff2') format('woff2');
+  font-weight: 300 700;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face { font-family: 'Josefin Sans'; src: url('/fonts/josefin-latin-ext.woff2') format('woff2'); font-weight: 300 600; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Josefin Sans'; src: url('/fonts/josefin-latin.woff2') format('woff2'); font-weight: 300 600; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+:root {
+  --deco: 'Josefin Sans', 'Work Sans', system-ui, sans-serif;
+  /* Brand colourways only: black lacquer + logo gold; cream + bronze. */
+  --lacquer: #100d0a;
+  --lacquer-2: #1a150f;
+  --lacquer-line: #34291b;
+  --gold: #cda45e;
+  --gold-hi: #e9cf96;
+  --gold-deep: #9a7334;
+  --cream: #f1e6d6;
+  --cream-2: #e6d6c0;
+  --bronze: #85602c;
+  --bronze-ink: #3a2a14;
+  --on-lacquer: #efe5d4;
+  --on-lacquer-muted: #b3a48d;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --sans: 'Work Sans', 'Segoe UI', system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 96px; }
+body {
+  margin: 0;
+  background: var(--lacquer);
+  color: var(--on-lacquer);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+h1, h2, h3 { margin: 0; font-weight: 500; text-wrap: balance; letter-spacing: -0.01em; }
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+::selection { background: var(--gold); color: var(--lacquer); }
+:focus-visible { outline: 2px solid var(--gold-hi); outline-offset: 3px; border-radius: 4px; }
+html { scrollbar-color: var(--gold-deep) var(--lacquer); }
+input, select, textarea, button { font: inherit; color: inherit; }
+input, textarea { caret-color: var(--gold); }
+
+.skip {
+  position: absolute; left: 16px; top: -80px; z-index: 100;
+  background: var(--gold); color: var(--lacquer); padding: 10px 16px; border-radius: 8px;
+  font-weight: 600; text-decoration: none; transition: top 300ms var(--ease-out);
+}
+.skip:focus { top: 16px; }
+
+.wrap {
+  width: 100%; max-width: 1240px; margin: 0 auto;
+  padding-left: max(24px, env(safe-area-inset-left));
+  padding-right: max(24px, env(safe-area-inset-right));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
+}

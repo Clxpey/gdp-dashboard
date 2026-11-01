@@ -1,0 +1,572 @@
+---
+import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import Logo from '../components/Logo.astro';
+import Icon from '../components/Icon.astro';
+
+import surroundSrc from '../../assets/plates/surround.png';
+import doorLeftSrc from '../../assets/plates/door-left.png';
+import doorRightSrc from '../../assets/plates/door-right.png';
+import intercomSrc from '../../assets/plates/intercom.png';
+import buttonSrc from '../../assets/plates/intercom-button.png';
+import floorSrc from '../../assets/plates/floor.png';
+import lobbySrc from '../../assets/motion/lobby.png';
+
+const webp = (src: ImageMetadata, width: number) => getImage({ src, width, format: 'webp', quality: 82 });
+const [surround, doorLeft, doorRight, intercom, button, floor, lobby, lobbyWide] = await Promise.all([
+  webp(surroundSrc, 2688), webp(doorLeftSrc, 960), webp(doorRightSrc, 840), webp(intercomSrc, 820),
+  webp(buttonSrc, 120), webp(floorSrc, 2688), webp(lobbySrc, 1400), webp(lobbySrc, 1985),
+]);
+
+const spaces = [
+  { id: 'locuinta', value: 'Locuință', label: 'Locuință' },
+  { id: 'apartament', value: 'Apartament', label: 'Apartament' },
+  { id: 'birou', value: 'Birou', label: 'Birou' },
+  { id: 'depozit', value: 'Depozit', label: 'Depozit' },
+  { id: 'renovare', value: 'După renovare', label: 'După renovare' },
+];
+
+const rules = [
+  { icon: 'doc-check', label: 'Preț fix, în scris', detail: 'Primești prețul în scris înainte de lucrare. Nu se schimbă în ziua vizitei.' },
+  { icon: 'team', label: 'Aceeași echipă', detail: 'Clienții recurenți au aceeași echipă la fiecare vizită.' },
+  { icon: 'contract', label: 'Factură și contract', detail: 'Pentru persoane fizice și firme, la fiecare client.' },
+  { icon: 'child-paw', label: 'Produse sigure pentru copii și animale', detail: 'Alegem produse potrivite pentru casele cu copii și animale de companie.' },
+] as const;
+
+const directory = [
+  { name: 'Locuințe și apartamente', text: 'Curățenie generală sau de întreținere, cameră cu cameră.' },
+  { name: 'Birouri', text: 'Spații de lucru, săli de ședință, bucătării și grupuri sanitare.' },
+  { name: 'Depozite și hale', text: 'Spații mari de depozitare și producție.' },
+  { name: 'Spații comerciale', text: 'Magazine, showroomuri și spații deschise publicului.' },
+  { name: 'După renovare', text: 'Praf de construcție, resturi de vopsea și adeziv, după constructor.' },
+];
+
+const faq = [
+  { q: 'Cum se stabilește prețul?', a: 'Ne spui tipul spațiului, suprafața și ce ai nevoie. Îți trimitem un preț fix, în scris, înainte de lucrare. Prețul nu se schimbă în ziua vizitei.' },
+  { q: 'Vine aceeași echipă de fiecare dată?', a: 'Da. Clienții recurenți au aceeași echipă la fiecare vizită, oameni care le cunosc deja spațiul.' },
+  { q: 'Emiteți factură și contract?', a: 'Da, pentru fiecare client, fie persoană fizică, fie firmă.' },
+  { q: 'Ce produse folosiți?', a: 'Produse sigure pentru casele cu copii și animale de companie.' },
+  { q: 'Ce tipuri de spații curățați?', a: 'Locuințe, apartamente, birouri, depozite, hale, spații comerciale și spații după renovare.' },
+];
+---
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Katharo Cleaning · Curățenie pentru case, birouri și depozite</title>
+  <meta name="description" content="Curățenie pentru locuințe, birouri și depozite. Preț fix, în scris, înainte de lucrare. Aceeași echipă la fiecare vizită. Factură și contract." />
+  <meta property="og:title" content="Katharo Cleaning" />
+  <meta property="og:description" content="Curat, ca la prima intrare. Preț fix, în scris, înainte de lucrare." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#100d0a" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="/fonts/work-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={surround.src} as="image" />
+</head>
+<body>
+  <a class="skip" href="#continut">Sari la conținut</a>
+
+  <header class="site-head" id="head">
+    <div class="head-inner">
+      <a class="brand" href="#top" aria-label="Katharo Cleaning, începutul paginii"><Logo /></a>
+      <nav aria-label="Principal">
+        <ul>
+          <li><a href="#servicii">Servicii</a></li>
+          <li><a href="#cum-lucram">Cum lucrăm</a></li>
+          <li><a href="#reguli">Regulile casei</a></li>
+          <li><a href="#intrebari">Întrebări</a></li>
+        </ul>
+      </nav>
+      <a class="head-cta" href="#oferta">Solicită o ofertă</a>
+    </div>
+  </header>
+
+  <main id="continut">
+    <!-- The entrance: doors open into the lobby as the visitor scrolls. -->
+    <section class="stage-track" id="top" aria-label="Intrarea Katharo">
+      <div class="stage">
+        <div class="frame" id="frame">
+          <img class="plate surround" src={surround.src} alt="" width="2688" height="1100" fetchpriority="high" />
+          <div class="opening" aria-hidden="true">
+            <img class="lobby" src={lobby.src} alt="" width="1240" height="880" loading="eager" />
+          </div>
+          <img class="plate door door-l" src={doorLeft.src} alt="" width="640" height="880" />
+          <span class="mullion" aria-hidden="true"></span>
+          <img class="plate door door-r" src={doorRight.src} alt="" width="556" height="880" />
+
+          <div class="glass-copy">
+            <span class="frost" aria-hidden="true"></span>
+            <h1>Curat, ca la<br />prima intrare.</h1>
+            <span class="rule headline-rule" aria-hidden="true"><i></i><Icon name="sparkle" class="star" /><i></i></span>
+            <p class="subline">Preț fix, în scris, înainte de lucrare.<br />Aceeași echipă la fiecare vizită.</p>
+          </div>
+
+          <form class="intercom js-intercom" id="intercom" novalidate aria-labelledby="intercom-title">
+            <img class="plate intercom-plate" src={intercom.src} alt="" width="548" height="930" />
+            <span class="ic-patch" aria-hidden="true" style={`background-image: url(${intercom.src})`}></span><span class="ic-divider" aria-hidden="true"></span>
+            <p class="ic-title" id="intercom-title">Katharo<span>Cleaning</span></p>
+            <fieldset class="ic-options">
+              <legend class="sr">Tipul spațiului</legend>
+              {spaces.map((s, i) => (
+                <label class={`ic-opt ic-opt-${i + 1}`}>
+                  <input type="radio" name="tip" value={s.value} required />
+                  <img src={button.src} alt="" width="64" height="64" />
+                  <span>{s.label}</span>
+                </label>
+              ))}
+            </fieldset>
+            <label class="ic-area-label" for="ic-area">Suprafață (m²)</label>
+            <input class="ic-area" id="ic-area" name="suprafata" type="number" inputmode="numeric" min="5" max="100000" />
+            <button class="ic-call" type="submit"><Icon name="phone" class="ic-phone" />Cere oferta fixă</button>
+            <p class="ic-msg" id="ic-msg" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="floor-wrap" id="reguli">
+            <img class="plate floor" src={floor.src} alt="" width="2688" height="420" />
+            <h2 class="rules-title">Regulile casei</h2>
+            <span class="rule rules-rule" aria-hidden="true"><i></i><Icon name="sparkle" class="star" /><i></i></span>
+            <ul class="rules">
+              {rules.map((r, i) => (
+                <li class={`rule-item rule-${i + 1}`}>
+                  <span class="rule-icon"><Icon name={r.icon} stroke={1.7} /></span>
+                  <span class="rule-label">{r.label}</span>
+                </li>
+              ))}
+            </ul>
+            <span class="sep sep-1" aria-hidden="true"></span><span class="sep sep-2" aria-hidden="true"></span><span class="sep sep-3" aria-hidden="true"></span>
+          </div>
+        </div>
+        <form class="m-starter js-intercom" novalidate aria-label="Cere oferta fixă">
+          <div class="ms-f"><label for="ms-type">Tip spațiu</label>
+            <select id="ms-type" name="tip"><option value="">Alege</option>{spaces.map((s) => <option value={s.value}>{s.label}</option>)}</select></div>
+          <div class="ms-f"><label for="ms-area">Suprafață (m²)</label><input id="ms-area" name="suprafata" type="number" inputmode="numeric" min="5" max="100000" /></div>
+          <button class="ms-call" type="submit"><Icon name="phone" class="ms-phone" />Cere oferta fixă</button>
+          <p class="ic-msg ms-msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Phones: the intercom and the house rules, below the entrance. -->
+    <section class="m-entry" aria-label="Cere oferta și regulile casei" style={`--floor-img: url(${floor.src})`}>
+      <ul class="m-rules">
+        {rules.map((r) => (<li><span class="rule-icon"><Icon name={r.icon} /></span><span><strong>{r.label}</strong><small>{r.detail}</small></span></li>))}
+      </ul>
+    </section>
+
+    <!-- Inside: the lobby tenant directory lists what Katharo cleans. -->
+    <section class="lobby-sec" id="servicii" aria-labelledby="servicii-h">
+      <img class="lobby-bg" src={lobbyWide.src} alt="" width="1985" height="1408" loading="lazy" />
+      <div class="wrap lobby-inner">
+        <div class="board">
+          <h2 id="servicii-h">Ce curățăm</h2>
+          <p class="board-sub">Locatari</p>
+          <ol class="board-list">
+            {directory.map((d) => (
+              <li><Icon name="sparkle" class="board-star" /><div><h3>{d.name}</h3><p>{d.text}</p></div></li>
+            ))}
+          </ol>
+        </div>
+        <p class="lobby-note">Și orice alt spațiu care are nevoie de curățenie. Spune-ne ce ai nevoie și îți trimitem prețul.</p>
+      </div>
+    </section>
+
+    <section class="cream-sec" id="cum-lucram" aria-labelledby="cum-h">
+      <div class="wrap">
+        <h2 id="cum-h" class="cream-h">Cum lucrăm</h2>
+        <span class="rule deco-rule" aria-hidden="true"><i></i><Icon name="sparkle" class="star" /><i></i></span>
+        <ol class="steps">
+          <li><span class="step-n" aria-hidden="true">1</span><h3>Ne spui ce ai nevoie</h3><p>Tipul spațiului, suprafața și ce trebuie curățat.</p></li>
+          <li><span class="step-n" aria-hidden="true">2</span><h3>Primești prețul fix, în scris</h3><p>Înainte de lucrare. Prețul nu se schimbă în ziua vizitei.</p></li>
+          <li><span class="step-n" aria-hidden="true">3</span><h3>Venim cu aceeași echipă</h3><p>Pentru clienții recurenți, de fiecare dată aceiași oameni. Cu factură și contract.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="cream-sec faq-sec" id="intrebari" aria-labelledby="faq-h">
+      <div class="wrap faq-grid">
+        <div><h2 id="faq-h" class="cream-h">Întrebări</h2><span class="rule deco-rule" aria-hidden="true"><i></i><Icon name="sparkle" class="star" /><i></i></span></div>
+        <div class="faq">
+          {faq.map((f, i) => (
+            <details open={i === 0}>
+              <summary>{f.q}<span class="pm" aria-hidden="true"></span></summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="desk-sec" id="oferta" aria-labelledby="oferta-h">
+      <div class="wrap desk-grid">
+        <div class="desk-intro">
+          <h2 id="oferta-h">Solicită o ofertă</h2>
+          <span class="rule deco-rule gold" aria-hidden="true"><i></i><Icon name="sparkle" class="star" /><i></i></span>
+          <p>Completează câteva detalii. Îți trimitem un preț fix, în scris, înainte de lucrare.</p>
+        </div>
+        <form class="desk" id="desk" novalidate>
+          <div class="f"><label for="d-name">Nume</label><input id="d-name" name="nume" autocomplete="name" required /><p class="err" id="e-name"></p></div>
+          <div class="f"><label for="d-phone">Telefon</label><input id="d-phone" name="telefon" type="tel" autocomplete="tel" inputmode="tel" required /><p class="err" id="e-phone"></p></div>
+          <div class="f full"><label for="d-email">Email <span>(opțional)</span></label><input id="d-email" name="email" type="email" autocomplete="email" /><p class="err" id="e-email"></p></div>
+          <div class="f"><label for="d-type">Tip spațiu</label>
+            <select id="d-type" name="tip" required>
+              <option value="">Alege</option>
+              {spaces.map((s) => <option value={s.value}>{s.label}</option>)}
+              <option value="Spațiu comercial">Spațiu comercial</option>
+              <option value="Altul">Altul</option>
+            </select><p class="err" id="e-type"></p></div>
+          <div class="f"><label for="d-area">Suprafață (m²)</label><input id="d-area" name="suprafata" type="number" inputmode="numeric" min="5" max="100000" /><p class="err" id="e-area"></p></div>
+          <div class="f full"><label for="d-city">Localitate</label><input id="d-city" name="localitate" autocomplete="address-level2" required /><p class="err" id="e-city"></p></div>
+          <div class="f full"><label for="d-msg">Detalii <span>(opțional)</span></label><textarea id="d-msg" name="detalii" rows="4"></textarea></div>
+          <div class="desk-foot full">
+            <small>Trimițând cererea ești de acord cu <a href="/confidentialitate">politica de confidențialitate</a>.</small>
+            <button type="submit" class="desk-send">Trimite cererea <Icon name="arrow" class="arr" /></button>
+          </div>
+          <p class="desk-status full" id="desk-status" role="status" aria-live="polite" hidden></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <a class="foot-brand" href="#top" aria-label="Katharo Cleaning, începutul paginii"><Logo /></a>
+      <ul class="foot-nav">
+        <li><a href="#servicii">Servicii</a></li><li><a href="#cum-lucram">Cum lucrăm</a></li>
+        <li><a href="#reguli">Regulile casei</a></li><li><a href="#intrebari">Întrebări</a></li>
+        <li><a href="#oferta">Solicită o ofertă</a></li>
+      </ul>
+    </div>
+    <div class="wrap foot-legal">
+      <span>© {new Date().getFullYear()} Katharo Cleaning</span>
+      <span><a href="/confidentialitate">Confidențialitate</a> · <a href="/termeni">Termeni</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Where quote requests are sent. Set to your form backend (e.g. Formspree) before launch.
+    const FORM_ENDPOINT = '';
+
+    // Doors open with scroll: --open 0→1, then the view moves into the lobby: --zoom 0→1.
+    const track = document.querySelector<HTMLElement>('.stage-track')!;
+    const root = document.documentElement;
+    const head = document.getElementById('head')!;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+    let ticking = false;
+    const clamp = (v: number) => Math.min(1, Math.max(0, v));
+    const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+    function update() {
+      ticking = false;
+      const r = track.getBoundingClientRect();
+      const span = Math.max(1, track.offsetHeight - innerHeight);
+      const p = reduce.matches ? 0 : clamp(-r.top / span);
+      root.style.setProperty('--open', ease(clamp(p / 0.55)).toFixed(4));
+      root.style.setProperty('--zoom', ease(clamp((p - 0.45) / 0.55)).toFixed(4));
+      head.classList.toggle('solid', scrollY > 8);
+    }
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener('resize', update);
+    update();
+
+    // Intercom: pick a space and m², then continue at the concierge desk with them filled in.
+    document.querySelectorAll<HTMLFormElement>('.js-intercom').forEach((ic) => {
+      const msg = ic.querySelector<HTMLElement>('.ic-msg')!;
+      ic.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const picked = ic.querySelector<HTMLInputElement>('input[type=radio]:checked') ?? ic.querySelector<HTMLSelectElement>('select');
+        const area = ic.querySelector<HTMLInputElement>('input[type=number]')!.value;
+        if (!picked || !picked.value) { msg.textContent = 'Alege tipul spațiului.'; return; }
+        msg.textContent = '';
+        (document.getElementById('d-type') as HTMLSelectElement).value = picked.value;
+        if (area) (document.getElementById('d-area') as HTMLInputElement).value = area;
+        document.getElementById('oferta')!.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth' });
+        setTimeout(() => (document.getElementById('d-name') as HTMLInputElement).focus({ preventScroll: true }), reduce.matches ? 0 : 700);
+      });
+    });
+
+    // Concierge desk form.
+    const desk = document.getElementById('desk') as HTMLFormElement;
+    const status = document.getElementById('desk-status')!;
+    const rules: Record<string, [string, (v: string) => boolean, string]> = {
+      name: ['d-name', (v) => v.trim().length >= 2, 'Scrie-ne numele tău.'],
+      phone: ['d-phone', (v) => /^(\+?40|0)\s?7\d{2}[\s.]?\d{3}[\s.]?\d{3}$/.test(v.trim()) || /^\+?\d[\d\s]{8,14}$/.test(v.trim()), 'Introdu un număr de telefon valid, de exemplu 0722 123 456.'],
+      email: ['d-email', (v) => !v.trim() || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()), 'Adresa de email nu este completă.'],
+      type: ['d-type', (v) => !!v, 'Alege tipul spațiului.'],
+      area: ['d-area', (v) => !v || (+v >= 5 && +v <= 100000), 'Suprafața trebuie să fie între 5 și 100000 m².'],
+      city: ['d-city', (v) => v.trim().length >= 2, 'Spune-ne localitatea.'],
+    };
+    function check(k: string) {
+      const [id, ok, msg] = rules[k];
+      const el = document.getElementById(id) as HTMLInputElement;
+      const bad = !ok(el.value);
+      el.setAttribute('aria-invalid', String(bad));
+      const err = document.getElementById('e-' + k)!;
+      err.textContent = bad ? msg : '';
+      bad ? el.setAttribute('aria-describedby', 'e-' + k) : el.removeAttribute('aria-describedby');
+      return !bad;
+    }
+    Object.keys(rules).forEach((k) => document.getElementById(rules[k][0])!.addEventListener('blur', (e) => { if ((e.target as HTMLInputElement).value) check(k); }));
+    desk.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const bad = Object.keys(rules).filter((k) => !check(k));
+      if (bad.length) { (document.getElementById(rules[bad[0]][0]) as HTMLElement).focus(); return; }
+      status.hidden = false; status.className = 'desk-status full';
+      if (!FORM_ENDPOINT) {
+        status.textContent = 'Formularul nu este încă conectat, așa că cererea nu a fost trimisă. Datele sunt complete și corecte.';
+        return;
+      }
+      const btn = desk.querySelector('button')!; btn.disabled = true;
+      try {
+        const res = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(desk) });
+        if (!res.ok) throw new Error(String(res.status));
+        status.classList.add('ok');
+        status.textContent = 'Am primit cererea. Îți trimitem prețul fix, în scris.';
+        desk.reset();
+      } catch {
+        status.textContent = 'Cererea nu a putut fi trimisă. Verifică conexiunea și încearcă din nou.';
+      } finally { btn.disabled = false; }
+    });
+  </script>
+</body>
+</html>
+
+<style>
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* ---------- Header on the lintel ---------- */
+  .site-head {
+    position: fixed; inset: 0 0 auto; z-index: 40; overflow: hidden;
+    padding-top: env(safe-area-inset-top);
+    transition: background-color 500ms var(--ease-out), box-shadow 500ms var(--ease-out);
+  }
+  .site-head.solid { background: rgba(16, 13, 10, 0.92); box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.6); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .site-head { --hw: var(--fw); }
+  .head-inner { position: relative; width: var(--fw); left: 50%; margin-left: calc(var(--fw) / -2); height: calc(var(--fw) * 0.052); min-height: 64px; container-type: inline-size; }
+  .brand { position: absolute; left: 11.76cqw; top: 0.5cqw; width: 17.04cqw; height: 3.57cqw; min-width: 150px; color: var(--gold); }
+  .site-head nav ul { list-style: none; margin: 0; padding: 0; }
+  .site-head nav li { position: absolute; top: 1.86cqw; }
+  .site-head nav li:nth-child(1) { left: 37.05cqw; } .site-head nav li:nth-child(2) { left: 43.6cqw; }
+  .site-head nav li:nth-child(3) { left: 52.53cqw; } .site-head nav li:nth-child(4) { left: 62.05cqw; }
+  .site-head nav a {
+    text-decoration: none; color: #eadfca; font-size: max(13px, 0.93cqw); font-weight: 500; letter-spacing: 0; line-height: 1.4; white-space: nowrap;
+    transition: color 300ms var(--ease-out);
+  }
+  .site-head nav a:hover { color: var(--gold-hi); }
+  .head-cta {
+    position: absolute; left: 82.07cqw; top: 1.12cqw; width: 11.98cqw; height: 2.68cqw; min-height: 36px;
+    display: grid; place-items: center; border: 1px solid var(--gold); border-radius: 999px;
+    color: #f2e8d6; text-decoration: none; font-size: max(13px, 0.95cqw); white-space: nowrap;
+    transition: background-color 300ms var(--ease-out), color 300ms var(--ease-out);
+  }
+  .head-cta:hover { background: var(--gold); color: var(--lacquer); }
+
+  /* ---------- Stage: the entrance ---------- */
+  :global(:root) { --fw: max(100vw, calc(100vh * 2688 / 1520)); }
+  .stage-track { position: relative; height: 210vh; background: var(--lacquer); }
+  .stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--lacquer); }
+  .frame {
+    position: absolute; left: 50%; top: 0; margin-left: calc(var(--fw) / -2); width: var(--fw); aspect-ratio: 2688 / 1520; overflow: hidden; container-type: inline-size;
+    perspective: 140cqw; perspective-origin: 39.4% 41.4%;
+    transform-origin: 39.4% 41.4%;
+    transform: scale(calc(1 + var(--zoom, 0) * 1.3));
+  }
+  .plate { position: absolute; object-fit: cover; }
+  .surround { left: 0; top: 0; width: 100%; height: 72.37%; }
+  .opening { position: absolute; left: 16.37%; top: 12.5%; width: 46.13%; height: 57.89%; overflow: hidden; background: #000; }
+  .lobby { width: 100%; height: 100%; object-fit: cover; transform: scale(calc(1.12 - var(--open, 0) * 0.12)); }
+  .door { top: 12.5%; height: 57.89%; backface-visibility: hidden; box-shadow: 0 0 0 rgba(0,0,0,0); transition: box-shadow 200ms linear; }
+  .mullion { position: absolute; left: 40.1%; top: 12.5%; width: 1.8%; height: 57.89%; background: #0c0a07; box-shadow: inset 1px 0 0 #5a4320, inset -1px 0 0 #5a4320; opacity: calc(1 - var(--open, 0) * 4); }
+  .door-l { left: 16.37%; width: 23.81%; transform-origin: 0 50%; transform: rotateY(calc(var(--open, 0) * -78deg)); filter: brightness(calc(1 - var(--open, 0) * 0.45)); }
+  .door-r { left: 41.82%; width: 20.68%; transform-origin: 100% 50%; transform: rotateY(calc(var(--open, 0) * 78deg)); filter: brightness(calc(1 - var(--open, 0) * 0.45)); }
+
+  .glass-copy { position: absolute; inset: 0; color: var(--bronze-ink); opacity: calc(1 - var(--open, 0) * 3); pointer-events: none; }
+  .glass-copy > * { position: absolute; margin: 0; }
+  .frost { left: 27.4%; top: 18.6%; width: 26%; height: 28.4%; background: rgba(226, 214, 194, 0.8); -webkit-mask-image: radial-gradient(closest-side, #000 58%, transparent 100%); mask-image: radial-gradient(closest-side, #000 58%, transparent 100%); }
+  .glass-copy h1 { left: 26.65%; top: 21.2%; width: 27.44%; text-align: center; font-size: 2.95cqw; line-height: 1.12; font-weight: 460; color: #3a2a12; letter-spacing: 0.01em; white-space: nowrap; }
+  .rule { display: flex; align-items: center; gap: 0.6cqw; color: var(--bronze-ink); }
+  .rule i { flex: 1; height: 1px; background: currentColor; opacity: 0.7; }
+  .rule :global(.star) { width: 1.05cqw; height: 1.05cqw; flex: none; }
+  .headline-rule { left: 30.36%; top: 34.74%; width: 19.79%; height: 2.5%; }
+  .subline { left: 28.58%; top: 38.1%; width: 23.42%; text-align: center; font-size: 0.98cqw; line-height: 1.62; font-weight: 400; letter-spacing: 0.01em; white-space: nowrap; }
+
+  /* Intercom: the working quote starter. */
+  .intercom { position: absolute; left: 73.81%; top: 8.29%; width: 20.39%; height: 61.18%; margin: 0; container-type: inline-size; }
+  .intercom-plate { inset: 0; width: 100%; height: 100%; }
+  .intercom > *:not(.intercom-plate) { position: absolute; }
+  .ic-patch { left: 0; width: 100%; top: 45.05%; height: 1.4cqw; background-size: 100cqw 169.7cqw; background-position: 0 calc(-76.45cqw + 3.2cqw); }
+  .ic-divider { left: 15.5%; width: 69%; top: 61.5%; height: 1px; background: #6d4d1d; opacity: 0.75; }
+  .ic-title { left: 30.3%; top: 10.8%; width: 40.1%; text-align: center; color: #3a2a12; font-size: 6.6cqw; letter-spacing: 0.32em; line-height: 1.15; text-transform: uppercase; padding-left: 0.32em; }
+  .ic-title span { display: block; font-size: 0.62em; letter-spacing: 0.42em; }
+  .ic-options { inset: 0; margin: 0; padding: 0; border: 0; }
+  .ic-opt { position: absolute; left: 16.1%; width: 70%; height: 7.6cqw; display: flex; align-items: center; gap: 4cqw; cursor: pointer; color: #322718; font-size: 4.3cqw; font-weight: 400; letter-spacing: -0.02em; }
+  .ic-opt::after { content: ''; position: absolute; left: 22%; right: -4%; bottom: -1.6cqw; height: 1px; background: #7a5a2a; opacity: 0.55; }
+  .ic-opt-1 { top: 22.8%; } .ic-opt-2 { top: 30.3%; } .ic-opt-3 { top: 38.1%; } .ic-opt-4 { top: 45.6%; } .ic-opt-5 { top: 53.1%; }
+  .ic-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .ic-opt img { width: 14.6cqw; height: 14.6cqw; margin-left: -1.5cqw; margin-right: -1.4cqw; flex: none; filter: drop-shadow(0 1px 1px rgba(40, 24, 6, 0.5)); transition: transform 220ms var(--ease-out), filter 220ms var(--ease-out); }
+  .ic-opt:hover img { transform: scale(1.04); }
+  .ic-opt:has(input:checked) img { transform: scale(0.9); filter: drop-shadow(0 0 3px rgba(255, 238, 190, 0.9)) brightness(1.08); }
+  .ic-opt:has(input:checked) span { font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.25em; }
+  .ic-opt:has(input:focus-visible) { outline: 2px solid #3a2a12; outline-offset: 3px; border-radius: 6px; }
+  .ic-area-label { left: 30%; top: 64.5%; width: 40%; text-align: center; color: #3a2a12; font-size: 3.85cqw; }
+  .ic-area { left: 24.1%; top: 68.8%; width: 51.5%; height: 7.3%; margin: 0; padding: 0 4cqw; border: 0.45cqw solid #9a764a; border-radius: 1.6cqw; background: #8e652f; outline: 0.25cqw solid #6d4d1d; box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.45); color: #f6e6c4; font-size: 5.4cqw; text-align: center; }
+  .ic-area:focus { outline: 2px solid #3a2a12; outline-offset: 2px; }
+  .ic-call {
+    left: 18.2%; top: 79.4%; width: 63.5%; height: 10.1%; border: 0; border-radius: 999px; cursor: pointer;
+    background: #2a1c0c; color: #e4c992; font-size: 4.6cqw; font-weight: 400; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 3cqw;
+    border: 0.4cqw solid #caa058; box-shadow: 0 0 0 0.3cqw #5a3f16, 0 2px 4px rgba(30, 18, 4, 0.6), inset 0 1px 0 rgba(255, 220, 150, 0.15);
+    transition: background-color 300ms var(--ease-out), transform 150ms var(--ease-out);
+  }
+  .ic-call:hover { background: #3a2911; }
+  .ic-call:active { transform: translateY(1px); }
+  .ic-call :global(.ic-phone) { width: 6cqw; height: 6cqw; fill: #d8b46d; stroke: none; }
+  .ic-msg { left: 10%; top: 91%; width: 80%; text-align: center; color: #4a1d0a; font-size: 4cqw; font-weight: 600; }
+
+  /* Floor and the house rules. */
+  .floor-wrap { position: absolute; left: 0; top: 72.37%; width: 100%; height: 27.63%; }
+  .floor-wrap { overflow: hidden; }
+  .floor { left: 0; bottom: 0; width: 100%; height: 128%; object-position: 50% 100%; filter: brightness(1.07) saturate(0.86); }
+  .floor-wrap > :not(.floor) { position: absolute; }
+  .rules-title { left: 38%; top: 9.6%; width: 24%; white-space: nowrap; text-align: center; color: #281a0c; font-family: var(--deco); font-size: 2.15cqw; line-height: 1.2; letter-spacing: 0.12em; font-weight: 400; }
+  .rules-rule { left: 37.43%; top: 25.7%; width: 25.07%; color: #281a0c; }
+  .rules { list-style: none; margin: 0; padding: 0; inset: 0; }
+  .rule-item { position: absolute; top: 37.1%; display: flex; flex-direction: column; align-items: center; gap: 0.62cqw; text-align: center; color: #2b1d0d; }
+  .rule-1 { left: 19.94%; width: 8.41%; } .rule-2 { left: 36.68%; width: 7.89%; } .rule-3 { left: 54.17%; width: 9.82%; } .rule-4 { left: 70.16%; width: 11.46%; } .rule-4 .rule-label { max-width: 11.8cqw; }
+  .rule-icon { width: 4.46cqw; height: 4.46cqw; border: 0.11cqw solid #2b1d0d; box-shadow: inset 0 0 0 0.05cqw rgba(255,255,255,0.35); border-radius: 50%; display: grid; place-items: center; }
+  .rule-icon :global(svg) { width: 55%; height: 55%; }
+  .rule-1 .rule-label, .rule-2 .rule-label, .rule-3 .rule-label { white-space: nowrap; }
+  .rule-label { font-size: 1.04cqw; line-height: 1.3; font-weight: 500; }
+  .sep { top: 41%; width: 1px; height: 38%; background: #8a7151; opacity: 0.85; }
+  .sep-1 { left: 32.2%; } .sep-2 { left: 50.07%; } .sep-3 { left: 67.04%; }
+
+  /* ---------- Inside the lobby: services directory ---------- */
+  .lobby-sec { position: relative; padding-block: 120px 96px; overflow: hidden; background: var(--lacquer); }
+  .lobby-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.55; }
+  .lobby-sec::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(16,13,10,0.92) 0%, rgba(16,13,10,0.55) 60%, rgba(16,13,10,0.25) 100%); }
+  .lobby-inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 640px) minmax(0, 1fr); gap: 48px; align-items: end; }
+  .board {
+    background-color: #120f0b; background-image: repeating-linear-gradient(180deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 9px);
+    border: 3px solid #b48a46; border-radius: 3px; padding: 40px 44px 28px;
+    box-shadow: inset 0 0 0 6px #120f0b, inset 0 0 0 7px #6e5328, 0 30px 60px -20px rgba(0,0,0,0.8);
+  }
+  .board h2 { font-family: var(--deco); font-weight: 400; font-size: 40px; line-height: 1.1; color: var(--gold-hi); text-align: center; letter-spacing: 0.14em; text-transform: uppercase; }
+  .board-sub { text-align: center; font-family: var(--deco); font-size: 13px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); padding: 8px 0 18px; border-bottom: 1px solid #6e5328; }
+  .board-list { list-style: none; margin: 0; padding: 0; }
+  .board-list li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid #3a2d17; }
+  .board-list li:last-child { border-bottom: 0; }
+  .board :global(.board-star) { width: 14px; height: 14px; color: var(--gold); margin-top: 8px; }
+  .board-list h3 { font-family: var(--deco); font-size: 20px; line-height: 1.3; color: #f1e3c4; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; }
+  .board-list p { margin-top: 4px; color: var(--on-lacquer-muted); font-size: 16px; }
+  .lobby-note { color: var(--on-lacquer); font-size: 20px; line-height: 1.5; max-width: 30ch; padding-bottom: 12px; }
+
+  /* ---------- Cream rooms ---------- */
+  .cream-sec { background: var(--cream); color: var(--bronze-ink); padding-block: 96px; }
+  .cream-h { font-family: var(--deco); font-weight: 400; font-size: 48px; line-height: 1.1; letter-spacing: 0.06em; color: #281a0c; }
+  .deco-rule { width: min(320px, 70%); margin-top: 18px; color: var(--bronze); }
+  .deco-rule :global(.star) { width: 14px; height: 14px; }
+  .deco-rule.gold { color: var(--gold); }
+  .steps { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid #cdb795; }
+  .steps li { padding: 32px 32px 8px 0; }
+  .steps li + li { padding-left: 32px; border-left: 1px solid #cdb795; }
+  .step-n { display: block; font-family: var(--deco); font-size: 64px; line-height: 1; color: var(--bronze); font-weight: 400; font-variant-numeric: lining-nums; }
+  .steps h3 { margin-top: 20px; font-size: 24px; line-height: 1.25; color: #281a0c; }
+  .steps p { margin-top: 10px; color: #5c4a31; max-width: 34ch; }
+  .faq-sec { padding-top: 32px; }
+  .faq-grid { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 48px; border-top: 1px solid #cdb795; padding-top: 64px; }
+  .faq details { border-bottom: 1px solid #cdb795; }
+  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 24px; padding: 22px 0; font-size: 21px; font-weight: 500; color: #281a0c; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary:hover { color: var(--bronze); }
+  .pm { position: relative; width: 18px; height: 18px; flex: none; margin-top: 6px; }
+  .pm::before, .pm::after { content: ''; position: absolute; left: 0; right: 0; top: 8px; height: 1.5px; background: var(--bronze); transition: transform 400ms var(--ease-out); }
+  .pm::after { transform: rotate(90deg); }
+  details[open] .pm::after { transform: rotate(0); }
+  .faq details p { padding: 0 0 24px; color: #5c4a31; max-width: 62ch; }
+
+  /* ---------- Concierge desk ---------- */
+  .desk-sec { padding-block: 112px; background: var(--lacquer); border-top: 1px solid var(--lacquer-line); }
+  .desk-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 64px; align-items: start; }
+  .desk-intro h2 { font-family: var(--deco); font-weight: 400; letter-spacing: 0.05em; font-size: 48px; line-height: 1.1; color: var(--gold-hi); }
+  .desk-intro p { margin-top: 20px; color: var(--on-lacquer-muted); font-size: 19px; max-width: 34ch; }
+  .desk { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; padding: 36px; background: var(--lacquer-2); border: 1px solid var(--lacquer-line); border-radius: 6px; box-shadow: 0 0 0 5px var(--lacquer-2), 0 0 0 6px #5b4524; }
+  .f { display: grid; gap: 8px; min-width: 0; }
+  .full { grid-column: 1 / -1; }
+  .f label { font-size: 14px; font-weight: 600; color: var(--on-lacquer); letter-spacing: 0.02em; }
+  .f label span { font-weight: 400; color: var(--on-lacquer-muted); }
+  .f input, .f select, .f textarea {
+    width: 100%; background: var(--lacquer); border: 1px solid #4a3a22; border-radius: 4px; padding: 12px 14px; color: var(--on-lacquer);
+    transition: border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+  }
+  .f textarea { resize: vertical; }
+  .f input:focus, .f select:focus, .f textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(205, 164, 94, 0.2); }
+  .f [aria-invalid='true'] { border-color: #d0835f; }
+  .err { font-size: 14px; color: #e59a7b; }
+  .err:empty { display: none; }
+  .desk-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding-top: 4px; }
+  .desk-foot small { color: var(--on-lacquer-muted); font-size: 13px; max-width: 34ch; }
+  .desk-foot small a { color: var(--gold-hi); }
+  .desk-send { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--lacquer); border: 0; border-radius: 999px; padding: 13px 26px; font-weight: 600; cursor: pointer; transition: background-color 300ms var(--ease-out), transform 150ms var(--ease-out); }
+  .desk-send:hover { background: var(--gold-hi); }
+  .desk-send:active { transform: translateY(1px); }
+  .desk-send:disabled { opacity: 0.6; cursor: progress; }
+  .desk-send :global(.arr) { width: 18px; height: 18px; }
+  .desk-status { padding: 14px 16px; border: 1px solid #4a3a22; border-radius: 4px; font-size: 15px; color: var(--on-lacquer); }
+  .desk-status.ok { border-color: var(--gold); color: var(--gold-hi); }
+
+  .foot { border-top: 1px solid var(--lacquer-line); padding-block: 56px 32px; }
+  .foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: center; }
+  .foot-brand { display: block; width: 220px; height: 50px; color: var(--gold); }
+  .foot-nav { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 15px; }
+  .foot-nav a { text-decoration: none; color: var(--on-lacquer-muted); }
+  .foot-nav a:hover { color: var(--on-lacquer); }
+  .foot-legal { margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #8a7d68; }
+
+  /* ---------- Responsive ---------- */
+  .m-entry { display: none; }
+  .m-starter { display: none; position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); gap: 12px; padding: 18px 16px calc(18px + env(safe-area-inset-bottom)); background: #15110b; border-top: 2px solid #b48a46; }
+  .ms-f { display: grid; gap: 6px; min-width: 0; }
+  .ms-f label { font-size: 13px; font-weight: 600; color: #e9d6ad; letter-spacing: 0.02em; }
+  .ms-f select, .ms-f input { width: 100%; height: 46px; background: #0d0b08; color: var(--on-lacquer); border: 1px solid #6e5328; border-radius: 4px; padding: 0 12px; }
+  .ms-call { grid-column: 1 / -1; height: 50px; border-radius: 999px; border: 2px solid #caa058; background: #2a1c0c; color: #ead6aa; font-weight: 500; font-size: 17px; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; }
+  .ms-call :global(.ms-phone) { width: 20px; height: 20px; fill: #d8b46d; stroke: none; }
+  .ms-msg { grid-column: 1 / -1; margin: 0; font-size: 14px; color: #e59a7b; }
+  .ms-msg:empty { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .stage-track { height: auto; }
+    .stage { position: relative; height: max(100svh, calc(var(--fw) * 1520 / 2688)); }
+  }
+  @media (max-width: 760px) {
+    .head-inner { width: 100%; left: 0; margin-left: 0; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; container-type: normal; }
+    .brand { position: static; width: 150px; height: 38px; min-width: 0; }
+    .site-head nav { display: none; }
+    .head-cta { position: static; width: auto; height: 40px; min-height: 0; padding: 0 16px; font-size: 14px; }
+    .stage-track { height: 160vh; }
+    :global(:root) { --fw: max(232vw, calc((100svh - 64px - 172px) * 2688 / 1520)); }
+    .frame { top: 64px; }
+    .m-starter { display: grid; }
+    .frame { margin-left: calc(var(--fw) * -0.394); }
+    .frame > .intercom, .floor-wrap .rules, .floor-wrap .sep, .rules-title, .rules-rule { display: none; }
+    .glass-copy h1 { font-size: 3.1cqw; }
+    .subline { font-size: 1.05cqw; }
+    .m-entry { display: block; position: relative; padding: 48px 16px 56px; background-color: #e8dccb; }
+    .m-entry { background-image: var(--floor-img); background-size: cover; background-position: center; }
+    .intercom-m { position: relative; left: auto; top: auto; width: min(100%, 380px); height: auto; aspect-ratio: 548 / 930; margin: 0 auto; }
+    .m-rules { list-style: none; margin: 40px auto 0; padding: 0; max-width: 420px; display: grid; gap: 0; color: #2b1d0d; }
+    .m-rules li { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 16px; align-items: center; padding: 16px 0; border-bottom: 1px solid rgba(110, 85, 50, 0.35); }
+    .m-rules .rule-icon { width: 52px; height: 52px; }
+    .m-rules strong { display: block; font-weight: 600; font-size: 17px; }
+    .m-rules small { display: block; font-size: 14px; line-height: 1.45; color: #5a4628; }
+    .lobby-sec { padding-block: 72px 64px; }
+    .board { padding: 28px 22px 16px; }
+    .board h2, .cream-h, .desk-intro h2 { font-size: 34px; }
+    .board-list h3 { font-size: 19px; }
+    .cream-sec, .desk-sec { padding-block: 64px; }
+    .desk { padding: 22px; grid-template-columns: minmax(0, 1fr); }
+    .faq summary { font-size: 18px; }
+  }
+
+  @media (max-width: 900px) {
+    .lobby-inner, .desk-grid, .faq-grid { grid-template-columns: minmax(0, 1fr); }
+    .steps { grid-template-columns: minmax(0, 1fr); }
+    .steps li, .steps li + li { padding: 28px 0 20px; border-left: 0; border-bottom: 1px solid #cdb795; }
+  }
+</style>

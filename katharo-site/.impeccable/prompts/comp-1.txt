@@ -1,0 +1,9 @@
+A desktop landing page for Katharo Cleaning, a premium cleaning company in Romania, rendered edge to edge as a finished website screen with crisp readable Romanian text, no browser window, device or desk around it.
+
+The visitor, a homeowner or an office manager, must decide whether to trust Katharo inside their space and ask for a fixed-price quote.
+
+What leads: the building's lobby tenant directory. The page is the immaculate lobby of a 1930s Bucharest interwar apartment block. The hero is a gold-framed tenant directory board with set gold letters on black, titled "Ce curățăm", its rows listing spaces like tenants on their floors: "Locuințe și apartamente", "Birouri", "Depozite și hale", "Spații comerciale", "După renovare". Beside it, a photograph of a spotless interwar lobby: cream terrazzo floor, gold brass handrail, black lacquer walls, frosted glass doors. Headline: "Curat, ca la prima intrare." At the foot of the first viewport, the concierge desk holds a working quote starter: a field "Tip spațiu", a field "Suprafață (m²)", and a button "Cere oferta fixă". Below, the start of the next section on cream: a plaque "Regulile casei" with four rules: "Preț fix, în scris, înainte de lucrare", "Aceeași echipă la fiecare vizită", "Factură și contract", "Produse sigure pentru copii și animale".
+
+Frame: top left the logo, a gold high-contrast serif letter K with a small four-point sparkle, next to the wordmark KATHARO CLEANING; navigation "Servicii", "Cum lucrăm", "Regulile casei", "Întrebări"; at the right a button "Solicită o ofertă".
+
+Visual law, pinned brand palette and nothing else: black lacquer with polished gold for the dark areas, warm cream with bronze for the light areas; no green, no other hues. Cream terrazzo with bronze and black chips. Building lettering in a geometric Art Deco display face, reading text in a quiet sans. The signature is the gold directory board.

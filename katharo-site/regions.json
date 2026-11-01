@@ -1,0 +1,415 @@
+{
+ "regions": [
+  {
+   "id": "surround",
+   "kind": "plate",
+   "pixelBox": {
+    "x": 0,
+    "y": 0,
+    "w": 2688,
+    "h": 1100
+   },
+   "note": "black lacquer entrance surround with the closed Art Deco doors and the plain brass intercom plate painted in: lintel band, polished black pilasters, marble side walls, brass wall sconces, planter at left"
+  },
+  {
+   "id": "door-left",
+   "kind": "plate",
+   "pixelBox": {
+    "x": 440,
+    "y": 190,
+    "w": 640,
+    "h": 880
+   },
+   "note": "left door leaf: black lacquer frame, geometric gold Art Deco ironwork, frosted glass, gold fan motif, long brass pull handle",
+   "bleed": true
+  },
+  {
+   "id": "door-right",
+   "kind": "plate",
+   "pixelBox": {
+    "x": 1124,
+    "y": 190,
+    "w": 556,
+    "h": 880
+   },
+   "note": "right door leaf: black lacquer frame, geometric gold Art Deco ironwork, frosted glass, gold fan motif, long brass pull handle",
+   "bleed": true
+  },
+  {
+   "id": "intercom",
+   "kind": "plate",
+   "pixelBox": {
+    "x": 1984,
+    "y": 126,
+    "w": 548,
+    "h": 930
+   },
+   "note": "brushed gold brass intercom plate with stepped engraved border, corner screws and a small diamond crest; labels, buttons and field are drawn in code",
+   "bleed": true
+  },
+  {
+   "id": "intercom-button",
+   "kind": "plate",
+   "pixelBox": {
+    "x": 2072,
+    "y": 330,
+    "w": 64,
+    "h": 64
+   },
+   "note": "one round polished brass push button, cropped tight to the button",
+   "bleed": true
+  },
+  {
+   "id": "floor",
+   "kind": "plate",
+   "pixelBox": {
+    "x": 0,
+    "y": 1100,
+    "w": 2688,
+    "h": 420
+   },
+   "note": "polished cream terrazzo floor in perspective with bronze and black chips and soft reflections of the entrance"
+  },
+  {
+   "id": "logo",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 316,
+    "y": 22,
+    "w": 458,
+    "h": 96
+   },
+   "note": "gold K with sparkle and KATHARO CLEANING wordmark (brand SVG)"
+  },
+  {
+   "id": "nav-servicii",
+   "kind": "control",
+   "pixelBox": {
+    "x": 996,
+    "y": 46,
+    "w": 98,
+    "h": 40
+   },
+   "note": "nav link Servicii"
+  },
+  {
+   "id": "nav-cum",
+   "kind": "control",
+   "pixelBox": {
+    "x": 1172,
+    "y": 46,
+    "w": 162,
+    "h": 40
+   },
+   "note": "nav link Cum lucrăm"
+  },
+  {
+   "id": "nav-reguli",
+   "kind": "control",
+   "pixelBox": {
+    "x": 1412,
+    "y": 46,
+    "w": 178,
+    "h": 40
+   },
+   "note": "nav link Regulile casei"
+  },
+  {
+   "id": "nav-intrebari",
+   "kind": "control",
+   "pixelBox": {
+    "x": 1668,
+    "y": 46,
+    "w": 116,
+    "h": 40
+   },
+   "note": "nav link Întrebări"
+  },
+  {
+   "id": "nav-cta",
+   "kind": "control",
+   "pixelBox": {
+    "x": 2206,
+    "y": 30,
+    "w": 322,
+    "h": 72
+   },
+   "note": "outlined gold pill button Solicită o ofertă"
+  },
+  {
+   "id": "headline",
+   "kind": "text",
+   "pixelBox": {
+    "x": 770,
+    "y": 326,
+    "w": 630,
+    "h": 188
+   },
+   "note": "headline Curat, ca la prima intrare. etched dark bronze on frosted glass, two lines"
+  },
+  {
+   "id": "headline-rule",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 816,
+    "y": 528,
+    "w": 532,
+    "h": 38
+   },
+   "note": "thin bronze rule with a four-point sparkle in the middle"
+  },
+  {
+   "id": "subline",
+   "kind": "text",
+   "pixelBox": {
+    "x": 822,
+    "y": 582,
+    "w": 522,
+    "h": 92
+   },
+   "note": "two lines: Preț fix, în scris, înainte de lucrare. Aceeași echipă la fiecare vizită."
+  },
+  {
+   "id": "intercom-title",
+   "kind": "text",
+   "pixelBox": {
+    "x": 2150,
+    "y": 226,
+    "w": 220,
+    "h": 72
+   },
+   "note": "engraved KATHARO CLEANING on the intercom"
+  },
+  {
+   "id": "opt-locuinta",
+   "kind": "control",
+   "pixelBox": {
+    "x": 2156,
+    "y": 338,
+    "w": 150,
+    "h": 42
+   },
+   "note": "intercom label Locuință"
+  },
+  {
+   "id": "opt-apartament",
+   "kind": "control",
+   "pixelBox": {
+    "x": 2156,
+    "y": 408,
+    "w": 172,
+    "h": 42
+   },
+   "note": "intercom label Apartament"
+  },
+  {
+   "id": "opt-birou",
+   "kind": "control",
+   "pixelBox": {
+    "x": 2156,
+    "y": 480,
+    "w": 92,
+    "h": 42
+   },
+   "note": "intercom label Birou"
+  },
+  {
+   "id": "opt-depozit",
+   "kind": "control",
+   "pixelBox": {
+    "x": 2156,
+    "y": 550,
+    "w": 122,
+    "h": 42
+   },
+   "note": "intercom label Depozit"
+  },
+  {
+   "id": "opt-renovare",
+   "kind": "control",
+   "pixelBox": {
+    "x": 2156,
+    "y": 620,
+    "w": 200,
+    "h": 42
+   },
+   "note": "intercom label După renovare"
+  },
+  {
+   "id": "area-label",
+   "kind": "text",
+   "pixelBox": {
+    "x": 2184,
+    "y": 726,
+    "w": 146,
+    "h": 32
+   },
+   "note": "engraved label Suprafață (m²)"
+  },
+  {
+   "id": "area-field",
+   "kind": "control",
+   "pixelBox": {
+    "x": 2116,
+    "y": 766,
+    "w": 282,
+    "h": 68
+   },
+   "note": "inset engraved number field for square metres"
+  },
+  {
+   "id": "submit",
+   "kind": "control",
+   "pixelBox": {
+    "x": 2084,
+    "y": 864,
+    "w": 348,
+    "h": 94
+   },
+   "note": "dark pill call button with phone glyph Cere oferta fixă"
+  },
+  {
+   "id": "rules-title",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1124,
+    "y": 1144,
+    "w": 442,
+    "h": 72
+   },
+   "note": "section title Regulile casei on terrazzo"
+  },
+  {
+   "id": "rules-rule",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 1006,
+    "y": 1208,
+    "w": 674,
+    "h": 32
+   },
+   "note": "thin rule with sparkle under the title"
+  },
+  {
+   "id": "rule1-icon",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 588,
+    "y": 1256,
+    "w": 120,
+    "h": 120
+   },
+   "note": "line icon document with check in a thin circle"
+  },
+  {
+   "id": "rule2-icon",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 1030,
+    "y": 1256,
+    "w": 120,
+    "h": 120
+   },
+   "note": "line icon three people in a thin circle"
+  },
+  {
+   "id": "rule3-icon",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 1528,
+    "y": 1256,
+    "w": 120,
+    "h": 120
+   },
+   "note": "line icon signed contract in a thin circle"
+  },
+  {
+   "id": "rule4-icon",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 1972,
+    "y": 1256,
+    "w": 122,
+    "h": 120
+   },
+   "note": "line icon child face and paw in a thin circle"
+  },
+  {
+   "id": "rule1-label",
+   "kind": "text",
+   "pixelBox": {
+    "x": 536,
+    "y": 1390,
+    "w": 226,
+    "h": 40
+   },
+   "note": "Preț fix, în scris"
+  },
+  {
+   "id": "rule2-label",
+   "kind": "text",
+   "pixelBox": {
+    "x": 986,
+    "y": 1390,
+    "w": 212,
+    "h": 40
+   },
+   "note": "Aceeași echipă"
+  },
+  {
+   "id": "rule3-label",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1456,
+    "y": 1390,
+    "w": 264,
+    "h": 40
+   },
+   "note": "Factură și contract"
+  },
+  {
+   "id": "rule4-label",
+   "kind": "text",
+   "pixelBox": {
+    "x": 1886,
+    "y": 1390,
+    "w": 308,
+    "h": 78
+   },
+   "note": "Produse sigure pentru copii și animale, two lines"
+  },
+  {
+   "id": "rule-sep1",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 860,
+    "y": 1272,
+    "w": 12,
+    "h": 160
+   },
+   "note": "thin vertical divider"
+  },
+  {
+   "id": "rule-sep2",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 1340,
+    "y": 1272,
+    "w": 12,
+    "h": 160
+   },
+   "note": "thin vertical divider"
+  },
+  {
+   "id": "rule-sep3",
+   "kind": "chrome",
+   "pixelBox": {
+    "x": 1796,
+    "y": 1272,
+    "w": 12,
+    "h": 160
+   },
+   "note": "thin vertical divider"
+  }
+ ]
+}
