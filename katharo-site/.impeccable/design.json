@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T11:57:20+00:00",
+  "title": "Design System: Katharo Cleaning",
+  "extensions": {
+    "colorMeta": {
+      "lacquer": {
+        "role": "neutral",
+        "displayName": "Black Lacquer",
+        "canonical": "oklch(16.2% 0.008 67.2)",
+        "tonalRamp": [
+          "#0c0b0a",
+          "#262523",
+          "#44413f",
+          "#64615d",
+          "#86817d",
+          "#a8a4a1",
+          "#cbc8c6",
+          "#f0eeec"
+        ]
+      },
+      "lacquer-2": {
+        "role": "neutral",
+        "displayName": "Raised Lacquer",
+        "canonical": "oklch(20.0% 0.014 72.0)",
+        "tonalRamp": [
+          "#0c0b0a",
+          "#272522",
+          "#45413d",
+          "#65605a",
+          "#888179",
+          "#aaa49e",
+          "#cdc8c3",
+          "#f1eeea"
+        ]
+      },
+      "lacquer-line": {
+        "role": "neutral",
+        "displayName": "Lacquer Seam",
+        "canonical": "oklch(28.9% 0.029 73.0)",
+        "tonalRamp": [
+          "#0d0b08",
+          "#29241e",
+          "#484138",
+          "#6a5f53",
+          "#8d8070",
+          "#aea396",
+          "#d0c8bd",
+          "#f4ede6"
+        ]
+      },
+      "on-lacquer": {
+        "role": "neutral",
+        "displayName": "Lamplit Cream",
+        "canonical": "oklch(92.5% 0.025 81.1)",
+        "tonalRamp": [
+          "#0c0b08",
+          "#28251f",
+          "#464139",
+          "#676054",
+          "#8a8172",
+          "#aca497",
+          "#cec8be",
+          "#f2eee7"
+        ]
+      },
+      "on-lacquer-muted": {
+        "role": "neutral",
+        "displayName": "Aged Cream",
+        "canonical": "oklch(72.5% 0.037 78.6)",
+        "tonalRamp": [
+          "#0d0b07",
+          "#29241c",
+          "#494134",
+          "#6b5f4e",
+          "#8e806a",
+          "#afa391",
+          "#d1c8b9",
+          "#f4ede3"
+        ]
+      },
+      "gold": {
+        "role": "primary",
+        "displayName": "Logo Gold",
+        "canonical": "oklch(74.1% 0.101 79.6)",
+        "tonalRamp": [
+          "#110a02",
+          "#302209",
+          "#543e16",
+          "#7a5b23",
+          "#a27b35",
+          "#c0a06a",
+          "#dfc59d",
+          "#feecd0"
+        ]
+      },
+      "gold-hi": {
+        "role": "primary",
+        "displayName": "Lit Brass",
+        "canonical": "oklch(86.3% 0.079 86.2)",
+        "tonalRamp": [
+          "#0f0b03",
+          "#2d2410",
+          "#4e4021",
+          "#725f34",
+          "#977f49",
+          "#b7a378",
+          "#d7c8a6",
+          "#f8eed6"
+        ]
+      },
+      "gold-deep": {
+        "role": "primary",
+        "displayName": "Shadowed Brass",
+        "canonical": "oklch(58.2% 0.094 77.0)",
+        "tonalRamp": [
+          "#110a02",
+          "#30220c",
+          "#543e1a",
+          "#7a5b2a",
+          "#a27b3d",
+          "#c09f6f",
+          "#dec5a0",
+          "#feecd2"
+        ]
+      },
+      "brass-frame": {
+        "role": "primary",
+        "displayName": "Brass Frame",
+        "canonical": "oklch(66.0% 0.100 77.6)",
+        "tonalRamp": [
+          "#110a02",
+          "#312209",
+          "#543d17",
+          "#7b5b25",
+          "#a37a37",
+          "#c19f6b",
+          "#dfc59d",
+          "#feecd0"
+        ]
+      },
+      "brass-hairline": {
+        "role": "primary",
+        "displayName": "Brass Hairline",
+        "canonical": "oklch(46.1% 0.069 77.2)",
+        "tonalRamp": [
+          "#0f0a04",
+          "#2d2314",
+          "#4f3f27",
+          "#745d3b",
+          "#9a7d52",
+          "#b9a17e",
+          "#d9c6ab",
+          "#faedd9"
+        ]
+      },
+      "cream": {
+        "role": "secondary",
+        "displayName": "Terrazzo Cream",
+        "canonical": "oklch(92.9% 0.024 77.5)",
+        "tonalRamp": [
+          "#0d0b08",
+          "#28241f",
+          "#474139",
+          "#686055",
+          "#8b8173",
+          "#aca498",
+          "#cfc8bf",
+          "#f2eee7"
+        ]
+      },
+      "cream-2": {
+        "role": "secondary",
+        "displayName": "Cream Shadow",
+        "canonical": "oklch(88.3% 0.034 76.0)",
+        "tonalRamp": [
+          "#0d0b07",
+          "#29241d",
+          "#494135",
+          "#6b5f50",
+          "#8e806c",
+          "#afa392",
+          "#d1c8bb",
+          "#f4ede4"
+        ]
+      },
+      "bronze": {
+        "role": "secondary",
+        "displayName": "Bronze",
+        "canonical": "oklch(51.7% 0.084 73.3)",
+        "tonalRamp": [
+          "#100a03",
+          "#302210",
+          "#533d21",
+          "#795b33",
+          "#a07b48",
+          "#bf9f76",
+          "#dec5a5",
+          "#fdecd6"
+        ]
+      },
+      "bronze-ink": {
+        "role": "secondary",
+        "displayName": "Bronze Ink",
+        "canonical": "oklch(29.8% 0.042 73.8)",
+        "tonalRamp": [
+          "#0e0b07",
+          "#2b241b",
+          "#4b4032",
+          "#6d5f4c",
+          "#927f67",
+          "#b2a28e",
+          "#d3c7b7",
+          "#f6ede2"
+        ]
+      },
+      "engraved-ink": {
+        "role": "secondary",
+        "displayName": "Engraved Ink",
+        "canonical": "oklch(23.2% 0.033 65.0)",
+        "tonalRamp": [
+          "#0e0a08",
+          "#2a241e",
+          "#4a4037",
+          "#6c5e51",
+          "#907f6e",
+          "#b1a294",
+          "#d3c7bc",
+          "#f5ede5"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Josefin section names on cream and at the desk; 34px under 760px."
+      },
+      "headline": {
+        "displayName": "Glass Headline",
+        "purpose": "The one sentence-length headline on the frosted door glass, scaled to the entrance frame."
+      },
+      "signage": {
+        "displayName": "Signage",
+        "purpose": "Uppercase tenant names on the directory board."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Step plaque headings."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Gold step numbers."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All reading text."
+      },
+      "body-lead": {
+        "displayName": "Body Lead",
+        "purpose": "Section intros and the lobby note."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Form labels and button text."
+      }
+    },
+    "shadows": [
+      {
+        "name": "brass-frame",
+        "value": "inset 0 0 0 6px #120f0b, inset 0 0 0 7px #6e5328, 0 30px 60px -20px rgba(0,0,0,0.8)",
+        "purpose": "Double brass frame plus hanging shadow on directory board and desk."
+      },
+      {
+        "name": "plaque-on-terrazzo",
+        "value": "inset 0 0 0 5px #15110b, inset 0 0 0 6px #6e5328, 0 18px 36px -18px rgba(40,26,8,0.6)",
+        "purpose": "Step plaques on the cream room."
+      },
+      {
+        "name": "header-solid",
+        "value": "0 8px 24px -12px rgba(0,0,0,0.6)",
+        "purpose": "Header once the page has scrolled."
+      },
+      {
+        "name": "field-focus",
+        "value": "0 0 0 3px rgba(205,164,94,0.2)",
+        "purpose": "Gold halo on focused fields."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 2px solid #e9cf96; outline-offset: 3px",
+        "purpose": "Global :focus-visible ring."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "House curve for every state change."
+      },
+      {
+        "name": "press",
+        "value": "150ms",
+        "purpose": "Button press translateY(1px)."
+      },
+      {
+        "name": "intercom-button",
+        "value": "220ms",
+        "purpose": "Intercom push button scale and glow."
+      },
+      {
+        "name": "state-color",
+        "value": "300ms",
+        "purpose": "Hover colour and field focus."
+      },
+      {
+        "name": "disclosure",
+        "value": "400ms",
+        "purpose": "FAQ plus/minus rotation."
+      },
+      {
+        "name": "header-solidify",
+        "value": "500ms",
+        "purpose": "Header background on scroll."
+      },
+      {
+        "name": "entrance-doors",
+        "value": "scroll-linked, 210vh track (160vh phones); doors rotateY to 78deg and dim 45% over first 55%; lobby scale 1.12 to 1; frame zoom to 2.3x from 45%; cubic ease-out",
+        "purpose": "Walking into the lobby. Reduced motion: unpinned, doors closed."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "760px"
+      },
+      {
+        "name": "stack",
+        "value": "900px"
+      },
+      {
+        "name": "container",
+        "value": "1240px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Concierge desk send: gold pill with trailing arrow.",
+      "html": "<button class=\"ds-btn-primary\">Trimite cererea <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h16M14 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:10px;background:#cda45e;color:#100d0a;border:0;border-radius:999px;padding:13px 26px;font:600 17px/1.2 'Work Sans',system-ui,sans-serif;cursor:pointer;transition:background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),transform 150ms cubic-bezier(0.16, 1, 0.3, 1)}.ds-btn-primary svg{width:18px;height:18px}.ds-btn-primary:hover{background:#e9cf96}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid #e9cf96;outline-offset:3px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Header CTA on the door lintel: gold-ringed pill that fills gold on hover.",
+      "html": "<div class=\"ds-dark\"><a class=\"ds-btn-outline\" href=\"#\">Solicită o ofertă</a></div>",
+      "css": ".ds-dark{background:#100d0a;padding:24px}.ds-btn-outline{display:inline-grid;place-items:center;height:40px;padding:0 16px;border:1px solid #cda45e;border-radius:999px;color:#f2e8d6;text-decoration:none;font:400 14px 'Work Sans',system-ui,sans-serif;transition:background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),color 300ms cubic-bezier(0.16, 1, 0.3, 1)}.ds-btn-outline:hover{background:#cda45e;color:#100d0a}.ds-btn-outline:focus-visible{outline:2px solid #e9cf96;outline-offset:3px}"
+    },
+    {
+      "name": "Intercom Call Button",
+      "kind": "button",
+      "refersTo": "button-intercom",
+      "description": "The quote starter call button: dark bronze pill in a gold ring with a phone glyph.",
+      "html": "<div class=\"ds-cream\"><button class=\"ds-btn-call\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6.2 3.5h3l1.5 4.2-2.1 1.3a11.5 11.5 0 0 0 6.4 6.4l1.3-2.1 4.2 1.5v3a1.9 1.9 0 0 1-2 1.9A16.5 16.5 0 0 1 4.3 5.5a1.9 1.9 0 0 1 1.9-2z\"/></svg>Cere oferta fixă</button></div>",
+      "css": ".ds-cream{background:#e6d6c0;padding:24px}.ds-btn-call{display:flex;align-items:center;justify-content:center;gap:10px;height:50px;padding:0 28px;border-radius:999px;border:2px solid #caa058;background:#2a1c0c;color:#ead6aa;font:500 17px 'Work Sans',system-ui,sans-serif;cursor:pointer;box-shadow:0 0 0 2px #5a3f16,0 2px 4px rgba(30,18,4,.6),inset 0 1px 0 rgba(255,220,150,.15);transition:background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),transform 150ms cubic-bezier(0.16, 1, 0.3, 1)}.ds-btn-call svg{width:20px;height:20px;fill:#d8b46d}.ds-btn-call:hover{background:#3a2911}.ds-btn-call:active{transform:translateY(1px)}.ds-btn-call:focus-visible{outline:2px solid #3a2a12;outline-offset:3px}"
+    },
+    {
+      "name": "Desk Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Concierge desk text field on lacquer with a gold focus halo.",
+      "html": "<div class=\"ds-dark ds-field\"><label for=\"ds-n\">Nume</label><input id=\"ds-n\" placeholder=\"\"></div>",
+      "css": ".ds-dark{background:#1a150f;padding:24px}.ds-field{display:grid;gap:8px;max-width:340px}.ds-field label{font:600 14px 'Work Sans',system-ui,sans-serif;letter-spacing:.02em;color:#efe5d4}.ds-field input{background:#100d0a;border:1px solid #4a3a22;border-radius:4px;padding:12px 14px;color:#efe5d4;caret-color:#cda45e;font:400 17px 'Work Sans',system-ui,sans-serif;transition:border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1)}.ds-field input:focus{outline:none;border-color:#cda45e;box-shadow:0 0 0 3px rgba(205,164,94,.2)}"
+    },
+    {
+      "name": "Lintel Navigation",
+      "kind": "nav",
+      "description": "Header links on the door lintel: warm cream, Lit Brass on hover.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Servicii</a><a href=\"#\">Cum lucrăm</a><a href=\"#\">Regulile casei</a><a href=\"#\">Întrebări</a></nav>",
+      "css": ".ds-nav{display:flex;gap:28px;background:#100d0a;padding:20px 24px}.ds-nav a{color:#eadfca;text-decoration:none;font:500 14px/1.4 'Work Sans',system-ui,sans-serif;transition:color 300ms cubic-bezier(0.16, 1, 0.3, 1)}.ds-nav a:hover{color:#e9cf96}.ds-nav a:focus-visible{outline:2px solid #e9cf96;outline-offset:3px;border-radius:4px}"
+    },
+    {
+      "name": "Directory Board",
+      "kind": "custom",
+      "refersTo": "directory-board",
+      "description": "Lobby tenant board listing the spaces Katharo cleans.",
+      "html": "<div class=\"ds-board\"><h2>Ce curățăm</h2><p class=\"ds-board-sub\">Locatari</p><ol><li><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5c.5 5.2 4.3 9 9.5 9.5-5.2.5-9 4.3-9.5 9.5-.5-5.2-4.3-9-9.5-9.5 5.2-.5 9-4.3 9.5-9.5z\"/></svg><div><h3>Birouri</h3><p>Spații de lucru, săli de ședință, bucătării și grupuri sanitare.</p></div></li><li><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5c.5 5.2 4.3 9 9.5 9.5-5.2.5-9 4.3-9.5 9.5-.5-5.2-4.3-9-9.5-9.5 5.2-.5 9-4.3 9.5-9.5z\"/></svg><div><h3>Depozite și hale</h3><p>Spații mari de depozitare și producție.</p></div></li></ol></div>",
+      "css": ".ds-board{max-width:520px;background:#120f0b repeating-linear-gradient(180deg,rgba(255,255,255,.025) 0 2px,transparent 2px 9px);border:3px solid #b48a46;border-radius:3px;padding:40px 44px 28px;box-shadow:inset 0 0 0 6px #120f0b,inset 0 0 0 7px #6e5328,0 30px 60px -20px rgba(0,0,0,.8)}.ds-board h2{margin:0;font:400 40px/1.1 'Josefin Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-align:center;color:#e9cf96}.ds-board-sub{margin:0;text-align:center;font:400 13px 'Josefin Sans',sans-serif;letter-spacing:.4em;text-transform:uppercase;color:#cda45e;padding:8px 0 18px;border-bottom:1px solid #6e5328}.ds-board ol{list-style:none;margin:0;padding:0}.ds-board li{display:grid;grid-template-columns:20px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #3a2d17}.ds-board li:last-child{border-bottom:0}.ds-board svg{width:14px;height:14px;fill:#cda45e;margin-top:8px}.ds-board h3{margin:0;font:400 20px/1.3 'Josefin Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#f1e3c4}.ds-board p{margin:4px 0 0;font:400 16px/1.6 'Work Sans',sans-serif;color:#b3a48d}"
+    },
+    {
+      "name": "Step Plaque",
+      "kind": "card",
+      "refersTo": "brass-panel",
+      "description": "Brass-framed lacquer plaque with rivets, on the terrazzo cream room.",
+      "html": "<div class=\"ds-terrazzo\"><div class=\"ds-plaque\"><span class=\"ds-n\">2</span><h3>Primești prețul fix, în scris</h3><p>Înainte de lucrare. Prețul nu se schimbă în ziua vizitei.</p></div></div>",
+      "css": ".ds-terrazzo{background:#f1e6d6;padding:32px}.ds-plaque{position:relative;max-width:340px;padding:36px 32px 32px;background:#15110b;color:#efe5d4;border:3px solid #b48a46;border-radius:3px;box-shadow:inset 0 0 0 5px #15110b,inset 0 0 0 6px #6e5328,0 18px 36px -18px rgba(40,26,8,.6)}.ds-plaque::before,.ds-plaque::after{content:'';position:absolute;top:12px;width:7px;height:7px;border-radius:50%;background:#c9a35e;box-shadow:inset -1px -1px 1px rgba(0,0,0,.5)}.ds-plaque::before{left:12px}.ds-plaque::after{right:12px}.ds-n{display:block;font:300 56px/1 'Josefin Sans',sans-serif;color:#cda45e}.ds-plaque h3{margin:18px 0 0;font:400 22px/1.25 'Josefin Sans',sans-serif;letter-spacing:.06em;color:#f1e3c4}.ds-plaque p{margin:10px 0 0;font:400 17px/1.6 'Work Sans',sans-serif;color:#b3a48d}"
+    },
+    {
+      "name": "Deco Rule",
+      "kind": "custom",
+      "description": "Hairline, logo sparkle, hairline: the section divider, bronze on cream and gold on lacquer.",
+      "html": "<div class=\"ds-rules\"><span class=\"ds-rule ds-bronze\"><i></i><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5c.5 5.2 4.3 9 9.5 9.5-5.2.5-9 4.3-9.5 9.5-.5-5.2-4.3-9-9.5-9.5 5.2-.5 9-4.3 9.5-9.5z\"/></svg><i></i></span><span class=\"ds-rule ds-gold\"><i></i><svg viewBox=\"0 0 24 24\"><path d=\"M12 2.5c.5 5.2 4.3 9 9.5 9.5-5.2.5-9 4.3-9.5 9.5-.5-5.2-4.3-9-9.5-9.5 5.2-.5 9-4.3 9.5-9.5z\"/></svg><i></i></span></div>",
+      "css": ".ds-rules{display:grid}.ds-rule{display:flex;align-items:center;gap:10px;width:320px;padding:24px}.ds-rule i{flex:1;height:1px;background:currentColor;opacity:.7}.ds-rule svg{width:14px;height:14px;fill:currentColor}.ds-bronze{background:#f1e6d6;color:#85602c}.ds-gold{background:#100d0a;color:#cda45e}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Caretaker's Lobby",
+    "overview": "Katharo is the caretaker of a fine interwar Bucharest apartment building, and the site is that building's entrance and lobby, kept spotless. Every piece of interface is an object you would find there: the quote starter is the brass intercom beside the door, the house rules are set into the terrazzo floor, the services are names on the lobby's tenant directory board, and the full quote form is the concierge desk. The visitor scrolls, the double doors swing open, the view walks into the lobby, and the page continues inside.\n\nThe world is built from two colourways and nothing else: black lacquer with polished logo gold for the dark rooms, warm cream with bronze for the light rooms. Materials carry the mood: lacquer walls, brass trim with a double frame line, cream terrazzo with bronze and black chips, frosted glass in the doors. Density is calm and roomy; sections breathe at 96px and type is set large and sparingly. Josefin Sans supplies the geometric Deco lettering of a building's signage; Work Sans does all the reading.\n\nAs built, the first viewport is the entrance (door surround, frosted-glass headline, intercom, terrazzo floor with the rules) and the tenant directory board appears once you are inside the lobby. This differs from the direction contract, which placed the directory board in the first viewport; the build is the record.",
+    "keyCharacteristics": [
+      "Diegetic interface: controls live on building objects (intercom, floor plaque, directory board, concierge desk).",
+      "Two colourways only: lacquer + gold, cream + bronze.",
+      "Brass-framed lacquer panels with a 3px brass border and an inset hairline.",
+      "Josefin Sans for building lettering, Work Sans for reading.",
+      "Scroll-driven entrance: doors open, then the view moves into the lobby.",
+      "Generated illustration plates and one photographic lobby plate, used as atmosphere only."
+    ],
+    "rules": [
+      {
+        "name": "The Two Colourways Rule",
+        "body": "Black lacquer with logo gold, or cream with bronze. No other hue enters the system; the owner pinned this. Gold belongs to dark rooms and bronze to cream rooms.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lit Brass Rule",
+        "body": "On lacquer, headings and links take `gold-hi`, never flat `gold`; flat `gold` is for fills, borders, the logo and small stars.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lettering Rule",
+        "body": "Josefin Sans is building lettering: section names, directory entries, numerals, the rules title. Anything read as a sentence (the hero headline, body, labels, buttons, FAQ questions) is Work Sans.",
+        "section": "typography"
+      },
+      {
+        "name": "The Brass Frame Rule",
+        "body": "A framed panel is a 3px Brass Frame border, a 5 to 6px gap in the panel's own colour, then a 1px Brass Hairline, at 3px corners. Never a single thin border, never a rounded card.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep every colour inside the two colourways: lacquer + gold, cream + bronze.",
+      "Do put interface on building objects (intercom, floor plaque, directory board, concierge desk) when a new surface needs controls.",
+      "Do frame lacquer panels with the double brass frame (3px Brass Frame, inset gap, 1px Brass Hairline, 3px corners).",
+      "Do set section names, directory entries and numerals in Josefin Sans, and everything read as a sentence in Work Sans.",
+      "Do use generated plates as atmosphere only: decorative (`alt=\"\"`), uncaptioned, and carrying their generation prompt in the file's `impeccable:prompt` metadata.",
+      "Do separate sections with the deco rule (hairline, logo sparkle, hairline) in the room's accent colour.",
+      "Do use the house ease-out (`cubic-bezier(0.16, 1, 0.3, 1)`) and honour reduced motion with a static, closed entrance."
+    ],
+    "donts": [
+      "Don't present generated imagery as real client work, real staff, real premises, or before/after proof; no captions, names or locations on plates.",
+      "Don't add a hue outside the colourways, including blues, greens or a separate red.",
+      "Don't use flat gold for text on lacquer; headings and links take Lit Brass.",
+      "Don't lift the directory board's tracked-caps header strip into a general label above section headings; it belongs to the board.",
+      "Don't replace the brass frame with a soft rounded card or a lone 1px border."
+    ]
+  }
+}
