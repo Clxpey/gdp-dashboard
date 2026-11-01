@@ -11,12 +11,14 @@ import intercomSrc from '../../assets/plates/intercom.png';
 import buttonSrc from '../../assets/plates/intercom-button.png';
 import floorSrc from '../../assets/plates/floor.png';
 import lobbySrc from '../../assets/motion/lobby.png';
+import tileSrc from '../../assets/textures/terrazzo-tile.png';
 
 const webp = (src: ImageMetadata, width: number) => getImage({ src, width, format: 'webp', quality: 82 });
 const [surround, doorLeft, doorRight, intercom, button, floor, lobby, lobbyWide] = await Promise.all([
   webp(surroundSrc, 2688), webp(doorLeftSrc, 960), webp(doorRightSrc, 840), webp(intercomSrc, 820),
   webp(buttonSrc, 120), webp(floorSrc, 2688), webp(lobbySrc, 1400), webp(lobbySrc, 1985),
 ]);
+const tile = await webp(tileSrc, 1000);
 
 const spaces = [
   { id: 'locuinta', value: 'Locuință', label: 'Locuință' },
@@ -85,7 +87,7 @@ const faq = [
   <main id="continut">
     <!-- The entrance: doors open into the lobby as the visitor scrolls. -->
     <section class="stage-track" id="top" aria-label="Intrarea Katharo">
-      <div class="stage">
+      <div class="stage" style={`--floor-img: url(${floor.src}); --tile: url(${tile.src})`}>
         <div class="frame" id="frame">
           <img class="plate surround" src={surround.src} alt="" width="2688" height="1100" fetchpriority="high" />
           <div class="opening" aria-hidden="true">
@@ -129,7 +131,7 @@ const faq = [
             <ul class="rules">
               {rules.map((r, i) => (
                 <li class={`rule-item rule-${i + 1}`}>
-                  <span class="rule-icon"><Icon name={r.icon} stroke={1.7} /></span>
+                  <span class="rule-icon"><Icon name={r.icon} stroke={1.9} /></span>
                   <span class="rule-label">{r.label}</span>
                 </li>
               ))}
@@ -148,7 +150,7 @@ const faq = [
     </section>
 
     <!-- Phones: the intercom and the house rules, below the entrance. -->
-    <section class="m-entry" aria-label="Cere oferta și regulile casei" style={`--floor-img: url(${floor.src})`}>
+    <section class="m-entry" aria-label="Cere oferta și regulile casei" style={`--floor-img: url(${floor.src}); --tile: url(${tile.src})`}>
       <form class="intercom intercom-m js-intercom" id="intercom-m" novalidate aria-labelledby="intercom-title-m">
             <img class="plate intercom-plate" src={intercom.src} alt="" width="548" height="930" />
             <span class="ic-patch" aria-hidden="true" style={`background-image: url(${intercom.src})`}></span><span class="ic-divider" aria-hidden="true"></span>
@@ -191,7 +193,7 @@ const faq = [
       </div>
     </section>
 
-    <section class="cream-sec" id="cum-lucram" aria-labelledby="cum-h">
+    <section class="cream-sec steps-sec" id="cum-lucram" aria-labelledby="cum-h" style={`--floor-img: url(${floor.src}); --tile: url(${tile.src})`}>
       <div class="wrap">
         <h2 id="cum-h" class="cream-h">Cum lucrăm</h2>
         <span class="rule deco-rule" aria-hidden="true"><i></i><Icon name="sparkle" class="star" /><i></i></span>
@@ -444,14 +446,14 @@ const faq = [
   /* Floor and the house rules. */
   .floor-wrap { position: absolute; left: 0; top: 72.37%; width: 100%; height: 27.63%; }
   .floor-wrap { overflow: hidden; }
-  .floor { left: 0; bottom: 0; width: 100%; height: 128%; object-position: 50% 100%; filter: brightness(1.07) saturate(0.86); }
+  .floor { inset: 0; width: 100%; height: 100%; }
   .floor-wrap > :not(.floor) { position: absolute; }
   .rules-title { left: 38%; top: 9.6%; width: 24%; white-space: nowrap; text-align: center; color: #281a0c; font-family: var(--deco); font-size: 2.15cqw; line-height: 1.2; letter-spacing: 0.12em; font-weight: 400; }
   .rules-rule { left: 37.43%; top: 25.7%; width: 25.07%; color: #281a0c; }
   .rules { list-style: none; margin: 0; padding: 0; inset: 0; }
   .rule-item { position: absolute; top: 37.1%; display: flex; flex-direction: column; align-items: center; gap: 0.62cqw; text-align: center; color: #2b1d0d; }
   .rule-1 { left: 19.94%; width: 8.41%; } .rule-2 { left: 36.68%; width: 7.89%; } .rule-3 { left: 54.17%; width: 9.82%; } .rule-4 { left: 70.16%; width: 11.46%; } .rule-4 .rule-label { max-width: 11.8cqw; }
-  .rule-icon { width: 4.46cqw; height: 4.46cqw; border: 0.11cqw solid #2b1d0d; box-shadow: inset 0 0 0 0.05cqw rgba(255,255,255,0.35); border-radius: 50%; display: grid; place-items: center; }
+  .rule-icon { width: 4.46cqw; height: 4.46cqw; border: 0.17cqw solid #241708; box-shadow: inset 0 0 0 0.12cqw rgba(255, 248, 235, 0.55), inset 0 0 0 0.2cqw #4a3418; border-radius: 50%; display: grid; place-items: center; }
   .rule-icon :global(svg) { width: 55%; height: 55%; }
   .rule-1 .rule-label, .rule-2 .rule-label, .rule-3 .rule-label { white-space: nowrap; }
   .rule-label { font-size: 1.04cqw; line-height: 1.3; font-weight: 500; }
@@ -484,12 +486,19 @@ const faq = [
   .deco-rule { width: min(320px, 70%); margin-top: 18px; color: var(--bronze); }
   .deco-rule :global(.star) { width: 14px; height: 14px; }
   .deco-rule.gold { color: var(--gold); }
-  .steps { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid #cdb795; }
-  .steps li { padding: 32px 32px 8px 0; }
-  .steps li + li { padding-left: 32px; border-left: 1px solid #cdb795; }
-  .step-n { display: block; font-family: var(--deco); font-size: 64px; line-height: 1; color: var(--bronze); font-weight: 400; font-variant-numeric: lining-nums; }
-  .steps h3 { margin-top: 20px; font-size: 24px; line-height: 1.25; color: #281a0c; }
-  .steps p { margin-top: 10px; color: #5c4a31; max-width: 34ch; }
+  .steps-sec { background: #e9dcc8 var(--tile) 0 0 / 500px auto repeat; position: relative; }
+  .steps-sec::before { content: ''; position: absolute; inset: 0; background: rgba(241, 230, 214, 0.55); }
+  .steps-sec > .wrap { position: relative; }
+  .steps { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .steps li {
+    position: relative; padding: 36px 32px 32px; background: #15110b; color: var(--on-lacquer); border: 3px solid #b48a46; border-radius: 3px;
+    box-shadow: inset 0 0 0 5px #15110b, inset 0 0 0 6px #6e5328, 0 18px 36px -18px rgba(40, 26, 8, 0.6);
+  }
+  .steps li::before, .steps li::after { content: ''; position: absolute; top: 12px; width: 7px; height: 7px; border-radius: 50%; background: #c9a35e; box-shadow: inset -1px -1px 1px rgba(0,0,0,0.5); }
+  .steps li::before { left: 12px; } .steps li::after { right: 12px; }
+  .step-n { display: block; font-family: var(--deco); font-size: 56px; line-height: 1; color: var(--gold); font-weight: 300; font-variant-numeric: lining-nums; }
+  .steps h3 { margin-top: 18px; font-family: var(--deco); font-weight: 400; letter-spacing: 0.06em; font-size: 22px; line-height: 1.25; color: #f1e3c4; }
+  .steps p { margin-top: 10px; color: var(--on-lacquer-muted); max-width: 34ch; }
   .faq-sec { padding-top: 32px; }
   .faq-grid { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 48px; border-top: 1px solid #cdb795; padding-top: 64px; }
   .faq details { border-bottom: 1px solid #cdb795; }
@@ -507,7 +516,7 @@ const faq = [
   .desk-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 64px; align-items: start; }
   .desk-intro h2 { font-family: var(--deco); font-weight: 400; letter-spacing: 0.05em; font-size: 48px; line-height: 1.1; color: var(--gold-hi); }
   .desk-intro p { margin-top: 20px; color: var(--on-lacquer-muted); font-size: 19px; max-width: 34ch; }
-  .desk { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; padding: 36px; background: var(--lacquer-2); border: 1px solid var(--lacquer-line); border-radius: 6px; box-shadow: 0 0 0 5px var(--lacquer-2), 0 0 0 6px #5b4524; }
+  .desk { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; padding: 40px; background: var(--lacquer-2); border: 3px solid #b48a46; border-radius: 3px; box-shadow: inset 0 0 0 6px var(--lacquer-2), inset 0 0 0 7px #6e5328, 0 30px 60px -24px rgba(0,0,0,0.7); }
   .f { display: grid; gap: 8px; min-width: 0; }
   .full { grid-column: 1 / -1; }
   .f label { font-size: 14px; font-weight: 600; color: var(--on-lacquer); letter-spacing: 0.02em; }
@@ -556,11 +565,13 @@ const faq = [
   }
   @media (max-width: 760px) {
     .head-inner { width: 100%; left: 0; margin-left: 0; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; container-type: normal; }
+    .site-head { background: rgba(16, 13, 10, 0.96); }
     .brand { position: static; width: 150px; height: 38px; min-width: 0; }
     .site-head nav { display: none; }
     .head-cta { position: static; width: auto; height: 40px; min-height: 0; padding: 0 16px; font-size: 14px; }
     .stage-track { height: 160vh; }
-    :global(:root) { --fw: max(232vw, calc((100svh - 64px - 172px) * 2688 / 1520)); }
+    :global(:root) { --fw: 214vw; }
+    .stage { background: #e4d2be var(--tile) 0 0 / 640px auto repeat; }
     .frame { top: 64px; }
     .m-starter { display: grid; }
     .frame { margin-left: calc(var(--fw) * -0.394); }
@@ -568,7 +579,7 @@ const faq = [
     .glass-copy h1 { font-size: 3.1cqw; }
     .subline { font-size: 1.05cqw; }
     .m-entry { display: block; position: relative; padding: 48px 16px 56px; background-color: #e8dccb; }
-    .m-entry { background-image: var(--floor-img); background-size: cover; background-position: center; }
+    .m-entry { background: #e4d2be var(--tile) 0 0 / 640px auto repeat; }
     .intercom-m { position: relative; left: auto; top: auto; width: min(100%, 380px); height: auto; aspect-ratio: 548 / 930; margin: 0 auto; }
     .m-rules-title { margin: 44px auto 0; max-width: 420px; text-align: center; font-family: var(--deco); font-weight: 400; font-size: 30px; letter-spacing: 0.1em; color: #281a0c; }
     .m-rules { list-style: none; margin: 16px auto 0; padding: 0; max-width: 420px; display: grid; gap: 0; color: #2b1d0d; }
@@ -588,6 +599,6 @@ const faq = [
   @media (max-width: 900px) {
     .lobby-inner, .desk-grid, .faq-grid { grid-template-columns: minmax(0, 1fr); }
     .steps { grid-template-columns: minmax(0, 1fr); }
-    .steps li, .steps li + li { padding: 28px 0 20px; border-left: 0; border-bottom: 1px solid #cdb795; }
+    .steps { gap: 16px; }
   }
 </style>
