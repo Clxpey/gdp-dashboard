@@ -1,0 +1,760 @@
+<title>Katharo Cleaning</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Katharo Cleaning: curățenie premium pentru case, apartamente și birouri. Echipe instruite, produse sigure și verificare finală după fiecare vizită.">
+<meta property="og:title" content="Katharo Cleaning">
+<meta property="og:description" content="Curățenie premium pentru case, apartamente și birouri.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#131209">
+<link rel="icon" href="{{FAVICON}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a dark, lamp-lit "lobby" (hero + trust) opening onto cream rooms (services, process),
+   with the brand sign as the hero object. Gold is used like brass fittings: sparingly, on edges and marks. */
+:root {
+  --ink: #131209;          /* lobby wall */
+  --ink-2: #1C1A11;        /* lifted panel */
+  --ink-line: #2E2A1C;     /* hairlines on dark */
+  --cream: #F4EDE2;        /* lit room */
+  --cream-2: #EBE2D2;      /* panel on cream */
+  --cream-line: #DCD0BA;
+  --gold: #CDA45E;         /* brass */
+  --gold-soft: #E9D3A0;
+  --bronze: #85602C;       /* brass on light ground */
+  --on-ink: #F2ECDF;
+  --on-ink-muted: #A69E8B;
+  --on-cream: #1E1B12;
+  --on-cream-muted: #5C5444;
+  --display: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+  --body: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--ink); color: var(--on-ink);
+  font-family: var(--body); font-size: 16px; line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--ink); }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; }
+svg { display: block; }
+.wrap {
+  width: 100%; max-width: 1200px; margin: 0 auto;
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
+}
+.eyebrow {
+  font-size: 12px; line-height: 16px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 600; color: var(--gold);
+}
+.on-cream .eyebrow { color: var(--bronze); }
+.skip { position: absolute; left: 16px; top: -64px; z-index: 100; background: var(--gold); color: var(--ink); padding: 8px 12px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: top 300ms var(--ease); }
+.skip:focus { top: calc(16px + env(safe-area-inset-top, 0px)); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+.on-cream :focus-visible { outline-color: var(--bronze); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; border: 1px solid transparent;
+  font: 600 16px/24px var(--body); padding: 12px 24px; border-radius: 999px;
+  text-decoration: none; cursor: pointer;
+  transition: transform 500ms var(--ease), background-color 500ms var(--ease), color 500ms var(--ease), border-color 500ms var(--ease);
+}
+.btn:active { transform: scale(0.98); }
+.btn-gold { background: var(--gold); color: var(--ink); }
+.btn-gold:hover { background: var(--gold-soft); transform: translateY(-1px); }
+.btn-ghost { border-color: var(--ink-line); color: var(--on-ink); }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold-soft); }
+.btn svg { width: 16px; height: 16px; transition: transform 500ms var(--ease); }
+.btn:hover svg { transform: translateX(3px); }
+.btn-sm { font-size: 14px; line-height: 20px; padding: 8px 16px; }
+
+/* Nav: floating pill */
+.nav {
+  position: fixed; z-index: 50; left: 0; right: 0;
+  top: calc(16px + env(safe-area-inset-top, 0px));
+  display: flex; justify-content: center; pointer-events: none;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.nav-pill {
+  pointer-events: auto; display: flex; align-items: center; gap: 24px;
+  padding: 8px 8px 8px 16px; border-radius: 999px;
+  background: rgba(19, 18, 9, 0.72); border: 1px solid rgba(205, 164, 94, 0.22);
+  -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%);
+  max-width: 100%;
+}
+.brand { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--on-ink); }
+.brand svg { width: 28px; height: 24px; color: var(--gold); }
+.brand span { font-family: var(--display); font-size: 18px; line-height: 28px; letter-spacing: 0.24em; font-weight: 600; }
+.nav-links { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.nav-links a {
+  display: block; padding: 8px 12px; border-radius: 999px; text-decoration: none;
+  font-size: 14px; line-height: 20px; color: var(--on-ink-muted); font-weight: 500;
+  transition: color 400ms var(--ease), background-color 400ms var(--ease);
+}
+.nav-links a:hover { color: var(--on-ink); background: rgba(242, 236, 223, 0.06); }
+.nav-links a[aria-current="true"] { color: var(--gold-soft); }
+.burger { display: none; position: relative; width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--ink-line); background: transparent; cursor: pointer; }
+.burger i { position: absolute; left: 12px; width: 16px; height: 1.5px; background: var(--on-ink); border-radius: 2px; transition: transform 600ms var(--ease), top 600ms var(--ease); }
+.burger i:nth-child(1) { top: 16px; }
+.burger i:nth-child(2) { top: 22px; }
+.menu-open .burger i:nth-child(1) { top: 19px; transform: rotate(45deg); }
+.menu-open .burger i:nth-child(2) { top: 19px; transform: rotate(-45deg); }
+.sheet {
+  position: fixed; inset: 0; z-index: 40; background: rgba(19, 18, 9, 0.86);
+  -webkit-backdrop-filter: blur(40px); backdrop-filter: blur(40px);
+  display: flex; flex-direction: column; justify-content: center; gap: 8px;
+  padding: 96px max(24px, env(safe-area-inset-right, 0px)) 48px max(24px, env(safe-area-inset-left, 0px));
+  opacity: 0; visibility: hidden; transition: opacity 600ms var(--ease), visibility 0s linear 600ms;
+}
+.menu-open .sheet { opacity: 1; visibility: visible; transition: opacity 600ms var(--ease); }
+.sheet a { font-family: var(--display); font-size: 36px; line-height: 48px; text-decoration: none; color: var(--on-ink); opacity: 0; transform: translateY(48px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
+.menu-open .sheet a { opacity: 1; transform: none; }
+.sheet a:nth-child(2) { transition-delay: 60ms; } .sheet a:nth-child(3) { transition-delay: 120ms; }
+.sheet a:nth-child(4) { transition-delay: 180ms; } .sheet a:nth-child(5) { transition-delay: 240ms; }
+.sheet .btn { margin-top: 24px; align-self: flex-start; font-family: var(--body); font-size: 16px; line-height: 24px; }
+
+/* Hero */
+.hero { padding-top: calc(128px + env(safe-area-inset-top, 0px)); padding-bottom: 80px; position: relative; overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+.hero h1 { font-size: 60px; line-height: 1; margin-top: 24px; max-width: 680px; font-weight: 500; color: var(--on-ink); }
+.hero h1 em { font-style: normal; color: var(--gold-soft); }
+.hero .lede { margin-top: 24px; max-width: 520px; font-size: 18px; line-height: 28px; color: var(--on-ink-muted); }
+.hero-ctas { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-note { margin-top: 24px; display: flex; align-items: center; gap: 8px; font-size: 14px; line-height: 20px; color: var(--on-ink-muted); }
+.hero-note svg { width: 18px; height: 18px; color: var(--gold); flex: none; }
+
+/* The sign */
+.sign {
+  position: relative; aspect-ratio: 4 / 5; max-width: 100%; border-radius: 24px; overflow: hidden;
+  background: #0E0D07; border: 1px solid var(--ink-line);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.8);
+}
+.sign-panel {
+  position: absolute; inset: 32px 32px 32px 32px; border-radius: 8px; background: #17150D;
+  border: 1px solid #2A2618; box-shadow: inset 0 1px 0 rgba(255, 240, 200, 0.04), inset 0 -24px 48px rgba(0,0,0,0.5);
+}
+.sign-glow {
+  position: absolute; left: 50%; top: 40%; width: 70%; aspect-ratio: 1; transform: translate(-50%, -50%);
+  border-radius: 50%; background: #C99A4E; opacity: 0.16; filter: blur(64px);
+  animation: breathe 7s var(--ease) infinite alternate;
+}
+@keyframes breathe { from { opacity: 0.12; } to { opacity: 0.2; } }
+.sign-logo { position: absolute; left: 50%; top: 46%; width: 72%; transform: translate(-50%, -50%); filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6)) drop-shadow(0 0 18px rgba(214, 170, 96, 0.25)); }
+.sign-branch { position: absolute; left: -12px; top: 8%; width: 42%; color: #8E7A4C; opacity: 0.9; }
+.sign-plate {
+  position: absolute; left: 32px; right: 32px; bottom: 32px; display: flex; justify-content: space-between;
+  padding: 16px 24px; border-top: 1px solid #2A2618; font-size: 12px; line-height: 16px; letter-spacing: 0.18em; text-transform: uppercase; color: #8B826D;
+}
+
+/* Trust bar */
+.trust { border-top: 1px solid var(--ink-line); border-bottom: 1px solid var(--ink-line); }
+.trust ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.trust li { display: flex; gap: 16px; align-items: center; padding: 32px 24px; }
+.trust li + li { box-shadow: -1px 0 0 var(--ink-line); }
+.trust svg { width: 40px; height: 40px; color: var(--gold); flex: none; }
+.trust strong { display: block; font-weight: 600; font-size: 16px; line-height: 24px; }
+.trust span { display: block; font-size: 14px; line-height: 20px; color: var(--on-ink-muted); }
+
+/* Cream rooms */
+.on-cream { background: var(--cream); color: var(--on-cream); }
+.section { padding-block: 96px; }
+.section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: end; margin-bottom: 64px; }
+.section-head h2 { font-size: 60px; line-height: 1; margin-top: 16px; }
+.section-head p { font-size: 18px; line-height: 28px; color: var(--on-cream-muted); max-width: 480px; }
+.on-ink .section-head p { color: var(--on-ink-muted); }
+
+.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.service {
+  background: var(--cream-2); border: 1px solid var(--cream-line); border-radius: 24px; padding: 40px;
+  display: flex; flex-direction: column; gap: 16px;
+  transition: transform 700ms var(--ease), background-color 700ms var(--ease), border-color 700ms var(--ease);
+}
+.service:hover { transform: translateY(-4px); background: #F8F2E8; border-color: #CDBE9F; }
+.service-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.service svg.ic { width: 40px; height: 40px; color: var(--bronze); }
+.service .tag { font-size: 12px; line-height: 16px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--on-cream-muted); border: 1px solid var(--cream-line); border-radius: 999px; padding: 4px 12px; white-space: nowrap; }
+.service h3 { font-size: 36px; line-height: 40px; margin-top: 8px; }
+.service p { color: var(--on-cream-muted); }
+.service ul { list-style: none; margin: 8px 0 0; padding: 16px 0 0; border-top: 1px solid var(--cream-line); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; font-size: 14px; line-height: 20px; }
+.service li { display: flex; gap: 8px; align-items: flex-start; }
+.service li svg { width: 16px; height: 16px; margin-top: 2px; color: var(--bronze); flex: none; }
+
+/* Tagline reveal */
+.statement { padding-block: 96px; }
+.statement p { font-family: var(--display); font-size: 60px; line-height: 1.05; max-width: 960px; font-weight: 500; text-wrap: balance; }
+.statement .w { color: rgba(242, 236, 223, 0.28); transition: color 900ms var(--ease); }
+.statement .w.on { color: var(--on-ink); }
+.statement .w.gold.on { color: var(--gold-soft); }
+.statement .sig { margin-top: 40px; display: flex; align-items: center; gap: 16px; font-size: 14px; line-height: 20px; color: var(--on-ink-muted); }
+.statement .sig b { font-family: var(--display); font-size: 24px; line-height: 32px; font-weight: 500; color: var(--gold); letter-spacing: 0.02em; }
+
+/* Process */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: s; }
+.step { position: relative; padding: 40px 32px 32px; border-radius: 24px; border: 1px solid var(--cream-line); }
+.step-n { font-variant-numeric: lining-nums; font-feature-settings: "lnum"; font-family: var(--display); font-size: 72px; line-height: 1; color: var(--bronze); opacity: 0.85; }
+.step h3 { font-size: 30px; line-height: 36px; margin-top: 24px; }
+.step p { margin-top: 12px; color: var(--on-cream-muted); }
+.step .meta { margin-top: 24px; font-size: 12px; line-height: 16px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--bronze); }
+
+/* Standard */
+.standard-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 64px; align-items: start; }
+.standard h2 { font-size: 60px; line-height: 1; margin-top: 16px; }
+.standard .lede { margin-top: 24px; font-size: 18px; line-height: 28px; color: var(--on-ink-muted); max-width: 460px; }
+.etym { margin-top: 40px; padding: 24px; border: 1px solid var(--ink-line); border-radius: 16px; display: grid; gap: 8px; max-width: 460px; }
+.etym .gr { font-family: var(--display); font-size: 30px; line-height: 36px; color: var(--gold-soft); }
+.etym p { font-size: 14px; line-height: 20px; color: var(--on-ink-muted); }
+.checklist { list-style: none; margin: 0; padding: 0; border: 1px solid var(--ink-line); border-radius: 24px; background: var(--ink-2); }
+.checklist li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 16px; padding: 24px 32px; align-items: start; }
+.checklist li + li { box-shadow: 0 -1px 0 var(--ink-line); }
+.checklist .box { width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(205, 164, 94, 0.4); display: grid; place-items: center; color: var(--gold); }
+.checklist .box svg { width: 18px; height: 18px; }
+.checklist strong { display: block; font-weight: 600; }
+.checklist span { display: block; margin-top: 4px; font-size: 14px; line-height: 20px; color: var(--on-ink-muted); }
+.promise { margin-top: 16px; padding: 32px; border-radius: 24px; background: var(--gold); color: var(--ink); display: flex; gap: 24px; align-items: center; }
+.promise svg { width: 48px; height: 48px; flex: none; }
+.promise h3 { font-size: 30px; line-height: 36px; font-weight: 600; }
+.promise p { margin-top: 4px; font-size: 14px; line-height: 20px; color: #3A3016; }
+
+/* FAQ */
+.faq-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 64px; }
+.faq-grid h2 { font-size: 60px; line-height: 1; margin-top: 16px; }
+.faq-grid .aside p { margin-top: 24px; color: var(--on-cream-muted); font-size: 18px; line-height: 28px; max-width: 360px; }
+.faq details { border-bottom: 1px solid var(--cream-line); }
+.faq details:first-child { border-top: 1px solid var(--cream-line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 24px; padding: 24px 0; font-family: var(--display); font-size: 24px; line-height: 32px; font-weight: 600; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary .pm { position: relative; width: 24px; height: 24px; flex: none; margin-top: 4px; }
+.faq summary .pm::before, .faq summary .pm::after { content: ""; position: absolute; left: 4px; right: 4px; top: 11px; height: 1.5px; background: var(--bronze); transition: transform 600ms var(--ease); }
+.faq summary .pm::after { transform: rotate(90deg); }
+.faq details[open] summary .pm::after { transform: rotate(0deg); }
+.faq details p { padding: 0 48px 24px 0; color: var(--on-cream-muted); }
+.faq summary:hover { color: var(--bronze); }
+
+/* Quote */
+.quote-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 64px; align-items: start; }
+.quote h2 { font-size: 72px; line-height: 1; margin-top: 16px; }
+.quote .lede { margin-top: 24px; font-size: 18px; line-height: 28px; color: var(--on-ink-muted); max-width: 440px; }
+.quote .assure { margin-top: 40px; display: grid; gap: 16px; list-style: none; padding: 0; }
+.quote .assure li { display: flex; gap: 12px; align-items: center; font-size: 14px; line-height: 20px; color: var(--on-ink); }
+.quote .assure svg { width: 20px; height: 20px; color: var(--gold); flex: none; }
+form { background: var(--ink-2); border: 1px solid var(--ink-line); border-radius: 24px; padding: 40px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
+.field { display: grid; gap: 8px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+label { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--on-ink); }
+label .opt { font-weight: 400; color: var(--on-ink-muted); }
+input, select, textarea {
+  width: 100%; font: 400 16px/24px var(--body); color: var(--on-ink); background: var(--ink);
+  border: 1px solid var(--ink-line); border-radius: 12px; padding: 12px 16px;
+  transition: border-color 400ms var(--ease), box-shadow 400ms var(--ease);
+}
+textarea { min-height: 112px; resize: vertical; }
+input::placeholder, textarea::placeholder { color: #6E6754; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(205, 164, 94, 0.18); }
+.field.invalid input, .field.invalid select { border-color: #D27A5F; }
+.err { font-size: 14px; line-height: 20px; color: #E3957D; min-height: 0; }
+.err:empty { display: none; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips input { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
+.chips label { font-weight: 500; padding: 8px 16px; border: 1px solid var(--ink-line); border-radius: 999px; cursor: pointer; color: var(--on-ink-muted); transition: all 400ms var(--ease); }
+.chips label:hover { border-color: #6B5A35; color: var(--on-ink); }
+.chips input:checked + label { background: rgba(205, 164, 94, 0.14); border-color: var(--gold); color: var(--gold-soft); }
+.chips input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
+.form-foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding-top: 8px; }
+.form-foot small { font-size: 12px; line-height: 16px; color: var(--on-ink-muted); max-width: 300px; }
+.form-foot small a { color: var(--gold-soft); }
+.form-status { grid-column: 1 / -1; padding: 16px; border-radius: 12px; font-size: 14px; line-height: 20px; border: 1px solid var(--ink-line); }
+.form-status.ok { border-color: rgba(205, 164, 94, 0.5); color: var(--gold-soft); background: rgba(205, 164, 94, 0.08); }
+
+/* Footer */
+footer { border-top: 1px solid var(--ink-line); padding-block: 64px 40px; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start; }
+.foot .word { width: 220px; color: var(--gold); }
+.foot nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; line-height: 20px; }
+.foot nav a { color: var(--on-ink-muted); text-decoration: none; }
+.foot nav a:hover { color: var(--on-ink); }
+.legal { margin-top: 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 12px; line-height: 16px; color: #7C7462; }
+.legal a { color: inherit; }
+
+/* Reveal (content stays visible at rest; only below-the-fold blocks animate in) */
+.js .rv { opacity: 0; transform: translateY(32px); filter: blur(6px); transition: opacity 900ms var(--ease), transform 900ms var(--ease), filter 900ms var(--ease); }
+.js .rv.in { opacity: 1; transform: none; filter: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .js .rv { opacity: 1; transform: none; filter: none; }
+  .statement .w { color: var(--on-ink); }
+}
+
+/* Responsive */
+@media (max-width: 1040px) {
+  .hero-grid, .standard-grid, .faq-grid, .quote-grid, .section-head { grid-template-columns: minmax(0, 1fr); }
+  .hero-grid { gap: 48px; }
+  .sign { max-width: 520px; aspect-ratio: 5 / 4; }
+  .sign-logo { width: 56%; }
+  .trust ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trust li:nth-child(3) { box-shadow: 0 -1px 0 var(--ink-line); }
+  .trust li:nth-child(4) { box-shadow: -1px 0 0 var(--ink-line), 0 -1px 0 var(--ink-line); }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .section-head { gap: 24px; margin-bottom: 48px; }
+}
+@media (max-width: 860px) {
+  .nav-links, .nav-pill > .btn { display: none; }
+  .burger { display: block; }
+  .nav-pill { gap: 48px; padding-left: 20px; }
+}
+@media (max-width: 720px) {
+  .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .hero { padding-top: calc(112px + env(safe-area-inset-top, 0px)); padding-bottom: 64px; }
+  .hero h1 { font-size: 48px; }
+  .hero .lede { font-size: 16px; line-height: 24px; }
+  .sign { aspect-ratio: 1 / 1; }
+  .sign-panel { inset: 16px; } .sign-plate { left: 16px; right: 16px; bottom: 16px; padding: 12px 16px; letter-spacing: 0.12em; }
+  .sign-logo { width: 70%; top: 44%; }
+  .trust ul { grid-template-columns: minmax(0, 1fr); }
+  .trust li { padding: 24px 0; box-shadow: none !important; }
+  .trust li + li { border-top: 1px solid var(--ink-line); }
+  .section, .statement { padding-block: 80px; }
+  .section-head h2, .standard h2, .faq-grid h2 { font-size: 48px; }
+  .quote h2 { font-size: 48px; }
+  .services { grid-template-columns: minmax(0, 1fr); }
+  .service { padding: 32px 24px; }
+  .service h3 { font-size: 30px; line-height: 36px; }
+  .service ul { grid-template-columns: minmax(0, 1fr); }
+  .statement p { font-size: 36px; line-height: 40px; }
+  .checklist li { padding: 24px; }
+  .promise { flex-direction: column; align-items: flex-start; padding: 24px; }
+  form { grid-template-columns: minmax(0, 1fr); padding: 24px; }
+  .faq details p { padding-right: 0; }
+}
+</style>
+
+<a class="skip" href="#continut">Sari la conținut</a>
+
+<header class="nav" id="nav">
+  <div class="nav-pill">
+    <a class="brand" href="#top" aria-label="Katharo Cleaning, începutul paginii">
+      <svg viewBox="{{MARK_VB}}" aria-hidden="true"><g fill="currentColor">{{MARK}}</g></svg>
+      <span>KATHARO</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicii">Servicii</a></li>
+      <li><a href="#cum-lucram">Cum lucrăm</a></li>
+      <li><a href="#standard">Standardul nostru</a></li>
+      <li><a href="#intrebari">Întrebări</a></li>
+    </ul>
+    <a class="btn btn-gold btn-sm" href="#oferta">Solicită o ofertă</a>
+    <button class="burger" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="meniu"><i></i><i></i></button>
+  </div>
+</header>
+<div class="sheet" id="meniu" aria-hidden="true">
+  <a href="#servicii">Servicii</a>
+  <a href="#cum-lucram">Cum lucrăm</a>
+  <a href="#standard">Standardul nostru</a>
+  <a href="#intrebari">Întrebări</a>
+  <a class="btn btn-gold" href="#oferta">Solicită o ofertă</a>
+</div>
+
+<main id="continut">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Curățenie premium · Case, apartamente, birouri</p>
+        <h1>Un spațiu curat<br>până la <em>ultimul detaliu.</em></h1>
+        <p class="lede">Fără să ridici un deget. Echipe instruite, produse sigure pentru copii și animale și o verificare finală făcută împreună cu tine, la fiecare vizită.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-gold" href="#oferta">Solicită o ofertă
+            <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" d="M40 128h176M144 56l72 72-72 72"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#servicii">Vezi serviciile</a>
+        </div>
+        <p class="hero-note">
+          <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="M40 114.7V56a8 8 0 0 1 8-8h160a8 8 0 0 1 8 8v58.7c0 84-71.3 111.8-85.5 116.5a7.5 7.5 0 0 1-5 0C111.3 226.5 40 198.7 40 114.7Z"/><path fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="m88 136 24 24 56-56"/></svg>
+          Dacă ceva nu e cum ne-am înțeles, revenim și refacem gratuit.
+        </p>
+      </div>
+      <div class="sign" role="img" aria-label="Sigla Katharo Cleaning, aurie, pe un panou întunecat luminat discret">
+        <div class="sign-panel"></div>
+        <div class="sign-glow"></div>
+        <svg class="sign-branch" viewBox="0 0 200 320" aria-hidden="true">{{BRANCH}}</svg>
+        <svg class="sign-logo" viewBox="{{STACK_VB}}" aria-hidden="true">
+          <defs><linearGradient id="g-sign" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6E3B4"/><stop offset=".45" stop-color="#D6B06A"/><stop offset=".78" stop-color="#B0823F"/><stop offset="1" stop-color="#E8CC8C"/></linearGradient></defs>
+          <g fill="url(#g-sign)">{{STACK}}</g>
+        </svg>
+        <div class="sign-plate"><span>Curățenie premium</span><span>Katharós · curat</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust" aria-label="De ce Katharo">
+    <div class="wrap">
+      <ul>
+        <li>
+          <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M40 114.7V56a8 8 0 0 1 8-8h160a8 8 0 0 1 8 8v58.7c0 84-71.3 111.8-85.5 116.5a7.5 7.5 0 0 1-5 0C111.3 226.5 40 198.7 40 114.7Z"/><path fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="m88 136 24 24 56-56"/></svg>
+          <div><strong>Profesionalism și încredere</strong><span>Contract și factură la fiecare lucrare</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round" d="M72 40h112l48 56-104 120L24 96Z"/><path fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round" d="M24 96h208M96 96l32-56 32 56-32 120Z"/></svg>
+          <div><strong>Atenție la detalii</strong><span>Listă de verificare pe fiecare cameră</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="108" cy="100" r="52" fill="none" stroke="currentColor" stroke-width="10"/><path fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" d="M24 200c20-30 50-48 84-48s64 18 84 48"/><path fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="m176 104 16 16 40-40"/></svg>
+          <div><strong>Personal verificat</strong><span>Aceeași echipă, de fiecare dată</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M64 200C40 120 96 48 216 40c-8 120-80 176-152 160Z"/><path fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" d="M40 224c40-56 80-96 128-128"/></svg>
+          <div><strong>Produse sigure</strong><span>Pentru copii, animale și suprafețe delicate</span></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="on-cream section" id="servicii">
+    <div class="wrap">
+      <div class="section-head rv">
+        <div>
+          <p class="eyebrow">Servicii</p>
+          <h2>Ce curățăm, și cât de bine.</h2>
+        </div>
+        <p>Fiecare serviciu are o listă clară a ce include. Știi dinainte ce primești, iar noi știm exact ce verificăm la final.</p>
+      </div>
+      <div class="services">
+        <article class="service rv">
+          <div class="service-top">
+            <svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round" d="M32 216V112l96-80 96 80v104Z"/><path fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round" d="M104 216v-64h48v64"/></svg>
+            <span class="tag">Cel mai cerut</span>
+          </div>
+          <h3>Curățenie generală</h3>
+          <p>O resetare completă a locuinței, cameră cu cameră, de la plinte până la corpurile de iluminat.</p>
+          <ul>
+            <li>{{CHECK}}Bucătărie: interior cuptor, hotă, frigider</li>
+            <li>{{CHECK}}Băi: calcar, rosturi, armături</li>
+            <li>{{CHECK}}Geamuri, rame și pervazuri</li>
+            <li>{{CHECK}}Uși, prize, întrerupătoare</li>
+          </ul>
+        </article>
+        <article class="service rv">
+          <div class="service-top">
+            <svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="88" fill="none" stroke="currentColor" stroke-width="10"/><path fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M128 72v56l40 24"/></svg>
+            <span class="tag">Săptămânal sau lunar</span>
+          </div>
+          <h3>Curățenie de întreținere</h3>
+          <p>Vizite regulate, cu aceeași echipă, ca locuința să rămână la nivelul primei curățenii.</p>
+          <ul>
+            <li>{{CHECK}}Aspirare și spălare pardoseli</li>
+            <li>{{CHECK}}Praf pe toate suprafețele</li>
+            <li>{{CHECK}}Bucătărie și băi igienizate</li>
+            <li>{{CHECK}}Schimbat lenjeria, la cerere</li>
+          </ul>
+        </article>
+        <article class="service rv">
+          <div class="service-top">
+            <svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M48 208h160M72 208V96l56-48 56 48v112"/><path fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" d="M104 136h48M104 168h48"/></svg>
+            <span class="tag">După renovare</span>
+          </div>
+          <h3>Curățenie după constructor</h3>
+          <p>Îndepărtăm praful fin, resturile de var, silicon și vopsea, fără să zgâriem finisajele noi.</p>
+          <ul>
+            <li>{{CHECK}}Praf de construcție, în două treceri</li>
+            <li>{{CHECK}}Etichete și folii de pe tâmplărie</li>
+            <li>{{CHECK}}Pete de vopsea și adeziv</li>
+            <li>{{CHECK}}Aspirare cu filtru HEPA</li>
+          </ul>
+        </article>
+        <article class="service rv">
+          <div class="service-top">
+            <svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><rect x="40" y="40" width="176" height="176" rx="8" fill="none" stroke="currentColor" stroke-width="10"/><path fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" d="M40 104h176M104 104v112"/></svg>
+            <span class="tag">În afara programului</span>
+          </div>
+          <h3>Birouri și spații comerciale</h3>
+          <p>Lucrăm seara sau în weekend, ca echipa ta să găsească dimineața un birou pregătit.</p>
+          <ul>
+            <li>{{CHECK}}Birouri, săli de ședință, recepție</li>
+            <li>{{CHECK}}Bucătării și grupuri sanitare</li>
+            <li>{{CHECK}}Golirea coșurilor și reciclare</li>
+            <li>{{CHECK}}Program fix, contract lunar</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement" aria-label="Promisiunea Katharo">
+    <div class="wrap">
+      <p id="tagline">Nu lăsăm în urmă decât <span class="gold">liniște.</span> Și un spațiu în care îți face plăcere să te întorci acasă.</p>
+      <div class="sig"><b>Katharo</b><span>din grecescul katharós, „curat, limpede”</span></div>
+    </div>
+  </section>
+
+  <section class="on-cream section" id="cum-lucram">
+    <div class="wrap">
+      <div class="section-head rv">
+        <div>
+          <p class="eyebrow">Cum lucrăm</p>
+          <h2>Trei pași, fără surprize.</h2>
+        </div>
+        <p>De la primul mesaj până la verificarea finală, știi în orice moment ce urmează și cât costă.</p>
+      </div>
+      <ol class="steps">
+        <li class="step rv">
+          <div class="step-n" aria-hidden="true">1</div>
+          <h3>Ne spui ce ai nevoie</h3>
+          <p>Completezi formularul sau ne trimiți câteva poze. Durează sub două minute.</p>
+          <p class="meta">Fără obligații</p>
+        </li>
+        <li class="step rv">
+          <div class="step-n" aria-hidden="true">2</div>
+          <h3>Primești oferta fixă</h3>
+          <p>Un preț clar, ce include și cât durează. Prețul nu se schimbă în ziua lucrării.</p>
+          <p class="meta">Preț stabilit dinainte</p>
+        </li>
+        <li class="step rv">
+          <div class="step-n" aria-hidden="true">3</div>
+          <h3>Curățăm și verificăm împreună</h3>
+          <p>La final parcurgem lista de verificare cu tine. Plătești doar când ești mulțumit.</p>
+          <p class="meta">Verificare finală inclusă</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="standard">
+    <div class="wrap standard-grid">
+      <div class="standard rv">
+        <p class="eyebrow">Standardul Katharo</p>
+        <h2>Încrederea se vede în detalii.</h2>
+        <p class="lede">Intrăm în casa ta. Tratăm asta cu seriozitate, de la cine vine la ușă până la ce produse folosim.</p>
+        <div class="etym">
+          <span class="gr" lang="el">καθαρός</span>
+          <p>În greaca veche înseamnă curat, pur, limpede. E standardul după care ne-am ales numele, și cel după care ne judecăm munca.</p>
+        </div>
+      </div>
+      <div class="rv">
+        <ul class="checklist">
+          <li><span class="box">{{CHECK}}</span><div><strong>Personal angajat și verificat</strong><span>Fiecare membru al echipei este instruit intern înainte de prima lucrare.</span></div></li>
+          <li><span class="box">{{CHECK}}</span><div><strong>Aceeași echipă la fiecare vizită</strong><span>Oamenii care îți cunosc casa și preferințele.</span></div></li>
+          <li><span class="box">{{CHECK}}</span><div><strong>Echipamente și produse aduse de noi</strong><span>Profesionale, sigure pentru copii, animale și suprafețe delicate.</span></div></li>
+          <li><span class="box">{{CHECK}}</span><div><strong>Cheile și accesul, gestionate discret</strong><span>Poți să nu fii acasă. Îți confirmăm sosirea și plecarea.</span></div></li>
+        </ul>
+        <div class="promise">
+          <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" d="M40 114.7V56a8 8 0 0 1 8-8h160a8 8 0 0 1 8 8v58.7c0 84-71.3 111.8-85.5 116.5a7.5 7.5 0 0 1-5 0C111.3 226.5 40 198.7 40 114.7Z"/><path fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" d="m88 136 24 24 56-56"/></svg>
+          <div>
+            <h3>Garanția Katharo</h3>
+            <p>Dacă ceva nu e la standardul promis, ne anunți în 24 de ore și revenim să refacem, fără cost.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-cream section" id="intrebari">
+    <div class="wrap faq-grid">
+      <div class="aside rv">
+        <p class="eyebrow">Întrebări frecvente</p>
+        <h2>Ce ne întreabă clienții înainte de prima vizită.</h2>
+        <p>Nu găsești răspunsul? Scrie-ne în formularul de ofertă și îți răspundem personal.</p>
+      </div>
+      <div class="faq rv">
+        <details open><summary>Cum se stabilește prețul?<span class="pm" aria-hidden="true"></span></summary><p>În funcție de suprafață, tipul de curățenie și starea spațiului. Îți trimitem o ofertă fixă înainte de lucrare, iar prețul nu se modifică în ziua vizitei.</p></details>
+        <details><summary>Trebuie să fiu acasă în timpul curățeniei?<span class="pm" aria-hidden="true"></span></summary><p>Nu. Mulți clienți ne lasă cheile sau un cod de acces. Îți confirmăm prin mesaj când am ajuns și când am plecat.</p></details>
+        <details><summary>Aduceți voi produsele și echipamentele?<span class="pm" aria-hidden="true"></span></summary><p>Da, tot ce e necesar. Dacă preferi anumite produse, de exemplu fără parfum, le folosim pe ale tale sau aducem varianta potrivită.</p></details>
+        <details><summary>Produsele sunt sigure pentru copii și animale?<span class="pm" aria-hidden="true"></span></summary><p>Da. Folosim produse profesionale potrivite pentru locuințe cu copii și animale, iar pentru marmură, lemn masiv sau piele alegem soluții dedicate.</p></details>
+        <details><summary>Ce se întâmplă dacă nu sunt mulțumit?<span class="pm" aria-hidden="true"></span></summary><p>Ne anunți în 24 de ore de la vizită și revenim să refacem zona respectivă, fără cost suplimentar.</p></details>
+        <details><summary>Cât de repede puteți veni?<span class="pm" aria-hidden="true"></span></summary><p>De obicei în câteva zile de la confirmarea ofertei. Pentru curățenie după constructor recomandăm programarea cu o săptămână înainte.</p></details>
+        <details><summary>Emiteți factură pentru firme?<span class="pm" aria-hidden="true"></span></summary><p>Da, emitem factură pentru persoane fizice și juridice și putem lucra pe bază de contract lunar.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section quote" id="oferta">
+    <div class="wrap quote-grid">
+      <div class="rv">
+        <p class="eyebrow">Solicită o ofertă</p>
+        <h2>Spune-ne despre spațiul tău.</h2>
+        <p class="lede">Îți trimitem o ofertă fixă, personalizată. Fără costuri ascunse și fără obligația de a comanda.</p>
+        <ul class="assure">
+          <li>{{CHECK}}Ofertă cu preț fix, înainte de lucrare</li>
+          <li>{{CHECK}}Plătești doar după verificarea finală</li>
+          <li>{{CHECK}}Datele tale rămân doar la noi</li>
+        </ul>
+      </div>
+      <form id="quote" class="rv" novalidate>
+        <div class="field">
+          <label for="f-name">Nume</label>
+          <input id="f-name" name="name" autocomplete="name" placeholder="Ex. Andreea Popescu" required>
+          <p class="err" id="e-name"></p>
+        </div>
+        <div class="field">
+          <label for="f-phone">Telefon</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="07xx xxx xxx" required>
+          <p class="err" id="e-phone"></p>
+        </div>
+        <div class="field full">
+          <label for="f-email">Email <span class="opt">(opțional)</span></label>
+          <input id="f-email" name="email" type="email" autocomplete="email" placeholder="nume@exemplu.ro">
+          <p class="err" id="e-email"></p>
+        </div>
+        <fieldset class="field full" style="border:0;padding:0;margin:0;min-width:0">
+          <legend style="padding:0;margin-bottom:8px"><label as="span">Tip de curățenie</label></legend>
+          <div class="chips">
+            <input type="radio" name="type" id="t1" value="Generală" checked><label for="t1">Generală</label>
+            <input type="radio" name="type" id="t2" value="Întreținere"><label for="t2">Întreținere</label>
+            <input type="radio" name="type" id="t3" value="După constructor"><label for="t3">După constructor</label>
+            <input type="radio" name="type" id="t4" value="Birou"><label for="t4">Birou</label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="f-area">Suprafață aproximativă <span class="opt">(m²)</span></label>
+          <input id="f-area" name="area" type="number" inputmode="numeric" min="10" max="5000" placeholder="Ex. 68">
+          <p class="err" id="e-area"></p>
+        </div>
+        <div class="field">
+          <label for="f-city">Localitate</label>
+          <input id="f-city" name="city" autocomplete="address-level2" placeholder="Ex. Cluj-Napoca" required>
+          <p class="err" id="e-city"></p>
+        </div>
+        <div class="field full">
+          <label for="f-msg">Detalii <span class="opt">(opțional)</span></label>
+          <textarea id="f-msg" name="message" placeholder="Număr de camere, animale de companie, data preferată"></textarea>
+        </div>
+        <div class="form-foot">
+          <small>Trimițând formularul ești de acord cu <a href="confidentialitate.html">politica de confidențialitate</a>.</small>
+          <button class="btn btn-gold" type="submit">Trimite cererea
+            <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" d="M40 128h176M144 56l72 72-72 72"/></svg>
+          </button>
+        </div>
+        <div class="form-status" id="status" role="status" aria-live="polite" hidden></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <svg class="word" viewBox="{{WORD_VB}}" role="img" aria-label="Katharo Cleaning"><g fill="currentColor">{{WORD}}</g></svg>
+      <nav aria-label="Subsol">
+        <ul>
+          <li><a href="#servicii">Servicii</a></li>
+          <li><a href="#cum-lucram">Cum lucrăm</a></li>
+          <li><a href="#standard">Standardul nostru</a></li>
+          <li><a href="#intrebari">Întrebări</a></li>
+          <li><a href="#oferta">Solicită o ofertă</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="legal">
+      <span>© <span id="yr">2026</span> Katharo Cleaning. Toate drepturile rezervate.</span>
+      <span><a href="confidentialitate.html">Politica de confidențialitate</a> · <a href="termeni.html">Termeni și condiții</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Where quote requests go. Set this to your form backend (e.g. a Formspree or Basin URL) before going live.
+const FORM_ENDPOINT = "";
+
+document.documentElement.classList.add("js");
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+// Mobile menu
+const root = document.documentElement, burger = document.querySelector(".burger"), sheet = document.getElementById("meniu");
+function setMenu(open) {
+  root.classList.toggle("menu-open", open);
+  burger.setAttribute("aria-expanded", String(open));
+  burger.setAttribute("aria-label", open ? "Închide meniul" : "Deschide meniul");
+  sheet.setAttribute("aria-hidden", String(!open));
+  document.body.style.overflow = open ? "hidden" : "";
+}
+burger.addEventListener("click", () => setMenu(!root.classList.contains("menu-open")));
+sheet.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+
+// Reveal blocks below the fold
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px" });
+document.querySelectorAll(".rv").forEach(el => {
+  if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in"); else io.observe(el);
+});
+
+// Current section in nav
+const links = [...document.querySelectorAll(".nav-links a")];
+const so = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) links.forEach(l => l.setAttribute("aria-current", String(l.getAttribute("href") === "#" + e.target.id)));
+}), { rootMargin: "-45% 0px -50% 0px" });
+["servicii", "cum-lucram", "standard", "intrebari", "oferta"].forEach(id => so.observe(document.getElementById(id)));
+
+// Tagline: words light up one by one as they cross the middle of the screen
+(function () {
+  const p = document.getElementById("tagline");
+  const nodes = [...p.childNodes]; p.textContent = "";
+  nodes.forEach(n => {
+    const gold = n.nodeType === 1;
+    n.textContent.split(/(\s+)/).forEach(t => {
+      if (!t) return;
+      if (/^\s+$/.test(t)) { p.append(t); return; }
+      const s = document.createElement("span"); s.className = "w" + (gold ? " gold" : ""); s.textContent = t; p.append(s);
+    });
+  });
+  const words = [...p.querySelectorAll(".w")];
+  let ticking = false;
+  function update() {
+    ticking = false;
+    const line = innerHeight * 0.62;
+    words.forEach(w => { if (w.getBoundingClientRect().top < line) w.classList.add("on"); });
+  }
+  const vo = new IntersectionObserver(es => {
+    if (es[0].isIntersecting) addEventListener("scroll", onScroll, { passive: true });
+    else removeEventListener("scroll", onScroll);
+    update();
+  });
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  vo.observe(p);
+})();
+
+// Quote form
+const form = document.getElementById("quote"), statusEl = document.getElementById("status");
+const rules = {
+  name: v => v.trim().length >= 2 || "Scrie numele tău, ca să știm cui ne adresăm.",
+  phone: v => /^(\+?4?0)?\s?7\d{2}[\s.]?\d{3}[\s.]?\d{3}$/.test(v.trim()) || "Introdu un număr de mobil valid, de exemplu 0722 123 456.",
+  email: v => !v.trim() || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || "Adresa de email nu pare completă. Verifică după @.",
+  area: v => !v || (+v >= 10 && +v <= 5000) || "Suprafața trebuie să fie între 10 și 5000 m².",
+  city: v => v.trim().length >= 2 || "Spune-ne localitatea, ca să verificăm dacă acoperim zona."
+};
+function check(name) {
+  const el = form.elements[name], res = rules[name](el.value), f = el.closest(".field");
+  const msg = res === true ? "" : res;
+  f.classList.toggle("invalid", !!msg);
+  el.setAttribute("aria-invalid", String(!!msg));
+  document.getElementById("e-" + name).textContent = msg;
+  if (msg) el.setAttribute("aria-describedby", "e-" + name); else el.removeAttribute("aria-describedby");
+  return !msg;
+}
+Object.keys(rules).forEach(n => form.elements[n].addEventListener("blur", () => { if (form.elements[n].value) check(n); }));
+Object.keys(rules).forEach(n => form.elements[n].addEventListener("input", () => { if (form.elements[n].closest(".field").classList.contains("invalid")) check(n); }));
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const bad = Object.keys(rules).filter(n => !check(n));
+  if (bad.length) { form.elements[bad[0]].focus(); return; }
+  const btn = form.querySelector("button[type=submit]");
+  const first = form.elements.name.value.trim().split(/\s+/)[0];
+  statusEl.hidden = false; statusEl.className = "form-status";
+  if (!FORM_ENDPOINT) {
+    statusEl.textContent = "Formularul nu este încă conectat la o adresă de primire, așa că cererea nu a fost trimisă. Previzualizare: datele sunt valide și ar fi fost trimise.";
+    return;
+  }
+  btn.disabled = true; btn.firstChild.textContent = "Se trimite ";
+  try {
+    const r = await fetch(FORM_ENDPOINT, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) });
+    if (!r.ok) throw new Error(r.status);
+    statusEl.className = "form-status ok";
+    statusEl.textContent = `Mulțumim, ${first}. Am primit cererea și revenim cu oferta în cel mai scurt timp.`;
+    form.reset();
+  } catch {
+    statusEl.textContent = "Cererea nu a putut fi trimisă. Verifică conexiunea și încearcă din nou.";
+  } finally { btn.disabled = false; btn.firstChild.textContent = "Trimite cererea "; }
+});
+</script>
